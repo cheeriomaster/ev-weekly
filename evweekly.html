@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新能源汽车行业周报</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --surface: #ffffff;
+    --surface2: #f9fafb;
+    --border: #e5e7eb;
+    --border-light: #f3f4f6;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --accent-border: #bfdbfe;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --orange: #d97706;
+    --orange-light: #fffbeb;
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --brand-nio: #00b3d7;
+    --brand-xiaomi: #ff6900;
+    --brand-li: #1db954;
+    --brand-xpeng: #1467f5;
+    --brand-huawei: #cf0a2c;
+    --brand-vw: #001e50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    letter-spacing: -0.3px;
+  }
+  .logo span { color: var(--accent); }
+
+  /* ── Filter Bar ── */
+  .filter-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    position: sticky;
+    top: 56px;
+    z-index: 99;
+  }
+  .filter-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all .15s ease;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .7;
+  }
+  .divider { width: 1px; height: 20px; background: var(--border); }
+
+  /* ── Layout ── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ── Weekly Highlight Banner ── */
+  .weekly-highlight {
+    background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .weekly-highlight-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #3b82f6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .weekly-highlight-label::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 12px;
+    background: #3b82f6;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .weekly-highlight-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #1e40af;
+    flex: 1;
+  }
+
+  /* ── Content Area ── */
+  .content { display: flex; flex-direction: column; gap: 20px; }
+
+  /* ── Report Card ── */
+  .report-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: opacity .2s, transform .2s;
+  }
+  .report-card.hidden { display: none; }
+  .report-header {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--surface2);
+  }
+  .report-date {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .report-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+  .report-brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .brand-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1.5px solid;
+  }
+  .brand-tag.nio    { color: var(--brand-nio);    border-color: var(--brand-nio);    background: #e8f9fd; }
+  .brand-tag.xiaomi { color: var(--brand-xiaomi); border-color: var(--brand-xiaomi); background: #fff4ec; }
+  .brand-tag.li     { color: var(--brand-li);     border-color: var(--brand-li);     background: #edfbf4; }
+  .brand-tag.xpeng  { color: var(--brand-xpeng);  border-color: var(--brand-xpeng);  background: #eef3ff; }
+  .brand-tag.huawei { color: var(--brand-huawei); border-color: var(--brand-huawei); background: #fef1f2; }
+  .brand-tag.vw      { color: #001e50; border-color: #001e50; background: #e8edf5; }
+
+  /* ── Summary Box ── */
+  .summary-box {
+    margin: 16px 20px 0;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+    border: 1px solid var(--accent-border);
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1e3a8a;
+  }
+  .summary-box-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .summary-box-label::before {
+    content: '';
+    width: 3px; height: 12px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* ── Sections ── */
+  .sections { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 0; }
+  .section {
+    border-bottom: 1px solid var(--border-light);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-header:hover .section-title { color: var(--accent); }
+  .section-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .icon-insight  { background: var(--orange-light); }
+  .icon-adas     { background: #ecf5ff; }
+  .icon-ai       { background: var(--purple-light); }
+  .icon-ota      { background: var(--green-light); }
+  .icon-hmi      { background: #fdf4ff; }
+  .icon-overview { background: var(--surface2); }
+  .icon-analysis { background: #fff7ed; }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    flex: 1;
+  }
+  .section-arrow {
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: transform .2s;
+  }
+  .section.open .section-arrow { transform: rotate(180deg); }
+
+  .section-body {
+    display: none;
+    padding: 0 0 14px 38px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+    line-height: 1.75;
+  }
+  .section.open .section-body { display: block; }
+
+  /* Insights */
+  .insight-item {
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--surface2);
+    margin-bottom: 10px;
+    border-left: 3px solid var(--orange);
+  }
+  .insight-item:last-child { margin-bottom: 0; }
+  .insight-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-size: 13.5px;
+  }
+
+  /* Tech dims */
+  .tech-block { margin-bottom: 14px; }
+  .tech-block:last-child { margin-bottom: 0; }
+  .tech-brand-name {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 13px;
+    margin-right: 6px;
+    padding: 1px 8px;
+    border-radius: 4px;
+    border: 1px solid;
+  }
+  .tech-brand-name.nio    { color: var(--brand-nio);    border-color: #b3e9f5; background: #e8f9fd; }
+  .tech-brand-name.xiaomi { color: var(--brand-xiaomi); border-color: #ffd4b3; background: #fff4ec; }
+  .tech-brand-name.li     { color: var(--brand-li);     border-color: #a7f3d0; background: #edfbf4; }
+  .tech-brand-name.xpeng  { color: var(--brand-xpeng);  border-color: #bfdbfe; background: #eef3ff; }
+  .tech-brand-name.huawei { color: var(--brand-huawei); border-color: #fecaca; background: #fef1f2; }
+  .no-content { color: var(--text-muted); font-style: italic; }
+
+  /* Brand overview */
+  .brand-overview { margin-bottom: 20px; }
+  .brand-overview:last-child { margin-bottom: 0; }
+  .brand-overview-name {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand-overview-name::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-light);
+  }
+  .platform-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+    align-items: flex-start;
+  }
+  .platform-badge {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--surface2);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    margin-top: 2px;
+  }
+  .platform-content { flex: 1; font-size: 13.5px; line-height: 1.7; }
+  .platform-content a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .platform-content a:hover { text-decoration: underline; }
+
+  /* Hot analysis */
+  .analysis-block { margin-bottom: 16px; }
+  .analysis-block:last-child { margin-bottom: 0; }
+  .analysis-h { font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+
+  /* ── Empty state ── */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+  .empty-state.show { display: block; }
+  .empty-state-icon { font-size: 36px; margin-bottom: 12px; }
+  .empty-state-text { font-size: 15px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .main { padding: 16px; }
+  }
+  @media (max-width: 600px) {
+    .main { padding: 12px; }
+    .filter-bar { padding: 10px 12px; }
+    .header { padding: 0 12px; }
+  }
+
+  /* ── Hover Image Preview ── */
+  .img-hint {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1.5px dashed var(--accent);
+    cursor: help;
+    color: inherit;
+  }
+  .img-hint::after {
+    content: ' 🖼';
+    font-size: 11px;
+    opacity: 0.45;
+    vertical-align: super;
+    font-style: normal;
+  }
+  .img-hint .img-tip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    padding: 8px;
+    width: 280px;
+    pointer-events: none;
+  }
+  .img-hint:hover .img-tip { display: block; }
+  .img-hint .img-tip img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 6px;
+    display: block;
+  }
+  .img-hint .img-tip .img-cap {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+  
+  .img-hint .img-tip img {
+    background: var(--surface2);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-hint .img-tip img::before {
+    content: "图片加载中...";
+    color: var(--text-muted);
+    font-size: 12px;
+    display: none;
+  }
+  .img-hint .img-tip img.loading::before {
+    display: block;
+  }
+  .img-hint .img-tip img.error::after {
+    content: "图片加载失败";
+    color: var(--text-muted);
+    font-size: 12px;
+    display: block;
+  }
+  
+  .img-hint.loaded::after {
+    content: ' ✅';
+    opacity: 0.6;
+    font-size: 11px;
+  }
+  .img-hint.error::after {
+    content: ' ❌';
+    opacity: 0.6;
+    font-size: 11px;
+  }
+  .img-hint .img-tip .img-error {
+    padding: 20px 10px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    background: var(--surface2);
+    border-radius: 4px;
+  }
+  /* Keep tooltip on-screen when near left/right edge */
+  .img-hint:first-child .img-tip,
+  .img-hint.tip-left .img-tip {
+    left: 0;
+    transform: none;
+  }
+  .img-hint.tip-right .img-tip {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
+  /* ── 新车型上市表格 ── */
+  .vehicle-section { margin-top: 4px; }
+  .vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .vehicle-table thead th {
+    background: #f3f4f6;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+  }
+  .vehicle-table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .vehicle-table tbody tr:hover td {
+    background: var(--accent-light);
+  }
+  .vehicle-table .car-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .vehicle-table .car-price {
+    font-weight: 700;
+    color: var(--red);
+    white-space: nowrap;
+  }
+  .vehicle-table .car-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 1px 7px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    color: var(--text-secondary);
+    margin: 1px 2px;
+    white-space: nowrap;
+  }
+  .vehicle-table .car-tag.hot   { background: #fef2f2; color: #dc2626; }
+  .vehicle-table .car-tag.new   { background: #eff6ff; color: #2563eb; }
+  .vehicle-table .car-tag.facelift { background: #ecfdf5; color: #059669; }
+
+
+  /* ── 独立新车型面板 ── */
+  .vehicle-panel {
+    display: none;
+  }
+  .vehicle-panel.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">新能源汽车<span>周报</span></div>
+  </div>
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <div class="filter-group">
+      <span class="filter-label">日期</span>
+      <span class="chip active" data-filter="date" data-value="all">全部</span>
+      <span class="chip" data-filter="date" data-value="20260414-20260420">4月14日–4月20日</span>
+      <span class="chip" data-filter="date" data-value="20260407-20260413">4月7日–4月13日</span>
+      <span class="chip" data-filter="date" data-value="20260331-20260406">3月31日–4月6日</span>
+      <span class="chip" data-filter="date" data-value="20260324-20260330">3月24日–3月30日</span>
+      <span class="chip" data-filter="date" data-value="20260320-20260326">3月20日–3月26日</span>
+    </div>
+    <div class="divider"></div>
+    <div class="filter-group">
+      <span class="filter-label">品牌</span>
+      <span class="chip active" data-filter="brand" data-value="all">全部</span>
+      <span class="chip" data-filter="brand" data-value="nio"><span class="chip-dot" style="color:var(--brand-nio)"></span>蔚来</span>
+      <span class="chip" data-filter="brand" data-value="xiaomi"><span class="chip-dot" style="color:var(--brand-xiaomi)"></span>小米</span>
+      <span class="chip" data-filter="brand" data-value="li"><span class="chip-dot" style="color:var(--brand-li)"></span>理想</span>
+      <span class="chip" data-filter="brand" data-value="xpeng"><span class="chip-dot" style="color:var(--brand-xpeng)"></span>小鹏</span>
+      <span class="chip" data-filter="brand" data-value="huawei"><span class="chip-dot" style="color:var(--brand-huawei)"></span>华为</span>
+      <span class="chip" data-filter="brand" data-value="vw"><span class="chip-dot" style="color:var(--brand-vw)"></span>大众</span>
+    </div>
+    <div class="divider"></div>
+    <div class="filter-group">
+      <span class="filter-label">主题</span>
+      <span class="chip active" data-filter="topic" data-value="all">全部</span>
+      <span class="chip" data-filter="topic" data-value="insight">综合洞察</span>
+      <span class="chip" data-filter="topic" data-value="adas">ADAS</span>
+      <span class="chip" data-filter="topic" data-value="ai">汽车AI</span>
+      <span class="chip" data-filter="topic" data-value="ota">OTA</span>
+      <span class="chip" data-filter="topic" data-value="hmi">HMI设计</span>
+      <span class="chip" data-filter="topic" data-value="overview">品牌概览</span>
+      <span class="chip" data-filter="topic" data-value="analysis">热点分析</span>
+      <span class="chip" data-filter="topic" data-value="vehicles">新车型</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Layout -->
+<div class="main">
+
+  <!-- Weekly Highlight Banner -->
+  <div class="weekly-highlight" id="weekly-highlight">
+    <div class="weekly-highlight-label">本周一句话总结</div>
+    <div class="weekly-highlight-text" id="weekly-highlight-text">
+      五期内容综览：VLA大模型军备竞赛启动，高端化与大众化两端同时加速，大众密集发布标志合资品牌进入智电反攻周期，北京车展即将引爆旗舰SUV正面决战。
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content" id="content">
+    <!-- ===== 新车型上市板块（独立） ===== -->
+    <div class="vehicle-panel" id="vehiclePanel">
+      <div class="section open">
+        <div class="section-header" onclick="toggleSection(this)">
+          <div class="section-icon icon-vehicles">🚙</div>
+          <div class="section-title">新车型上市速览</div>
+          <div class="section-arrow">▼</div>
+        </div>
+        <div class="section-body">
+          <table class="vehicle-table">
+            <thead>
+              <tr>
+                <th>品牌</th>
+                <th>发布/上市时间</th>
+                <th>车型</th>
+                <th>价格（万元）</th>
+                <th>定位人群</th>
+                <th>尺寸级别</th>
+                <th>核心特点</th>
+                <th>状态</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-brand="nio">
+                <td><strong style="color:var(--brand-nio)">蔚来</strong></td>
+                <td>4/9 技术发布会</td>
+                <td><span class="car-name">ES9</span></td>
+                <td><span class="car-price">42.00起</span></td>
+                <td>高净值家庭、BBA换购用户、科技先锋</td>
+                <td>大型SUV（约5.2m）</td>
+                <td>神玑NX9031芯片（5nm，400+TOPS）；31传感器方案；150kWh半固态电池；CLTC续航1000km+；NOMI Mate情感交互座舱</td>
+                <td><span class="car-tag hot">技术发布会/预售</span></td>
+              </tr>
+              <tr data-brand="huawei">
+                <td><strong style="color:var(--brand-huawei)">华为·问界</strong></td>
+                <td>4/11 预售开启</td>
+                <td><span class="car-name">M6</span></td>
+                <td><span class="car-price">待公布</span></td>
+                <td>家庭增换购、性价比敏感的中产群体</td>
+                <td>中型SUV</td>
+                <td>20天预订破10万；ADS 5.0首发搭载；HiCar 4.0+鸿蒙生态深度整合；手车流转协同体验</td>
+                <td><span class="car-tag hot">预售中</span></td>
+              </tr>
+              <tr data-brand="huawei">
+                <td><strong style="color:var(--brand-huawei)">华为·问界</strong></td>
+                <td>改款预告，6月前升级</td>
+                <td><span class="car-name">M9（2026款）</span></td>
+                <td><span class="car-price">46.98–56.98</span></td>
+                <td>旗舰SUV需求的高净值人群、商务出行</td>
+                <td>全尺寸SUV</td>
+                <td>外观微调；免费升级896线激光雷达（6月前）；ADS 5.0界面升级</td>
+                <td><span class="car-tag new">改款预告</span></td>
+              </tr>
+              <tr data-brand="xpeng">
+                <td><strong style="color:var(--brand-xpeng)">小鹏</strong></td>
+                <td>已上市热销</td>
+                <td><span class="car-name">MONA M03（2026款）</span></td>
+                <td><span class="car-price">11.98–15.18</span></td>
+                <td>年轻首购族、预算敏感的智驾爱好者、城市通勤者</td>
+                <td>紧凑型轿车</td>
+                <td>图灵AI芯片下放；750TOPS算力；VLA 2.0全量推送；37分钟万订；智驾平权标杆</td>
+                <td><span class="car-tag hot">已上市热销</span></td>
+              </tr>
+              <tr data-brand="li">
+                <td><strong style="color:var(--brand-li)">理想</strong></td>
+                <td>4/10 第10万辆下线</td>
+                <td><span class="car-name">i6（第10万辆下线）</span></td>
+                <td><span class="car-price">25.98起</span></td>
+                <td>纯电家庭用户、追求空间与舒适的中产</td>
+                <td>中大型SUV</td>
+                <td>首款纯电产品进入量产稳定期；OTA 8.4 MindVLA底层更新；能耗优化</td>
+                <td><span class="car-tag facelift">量产里程碑</span></td>
+              </tr>
+              <tr data-brand="li">
+                <td><strong style="color:var(--brand-li)">理想</strong></td>
+                <td>工信部公示中</td>
+                <td><span class="car-name">L8 Livis（新款）</span></td>
+                <td><span class="car-price">待公布（预计30万+）</span></td>
+                <td>二孩/三孩家庭、多乘员场景需求者</td>
+                <td>中大型六座SUV</td>
+                <td>工信部第406批公告申报成功；增强激光雷达配置；OTA能力升级；预计年中上市</td>
+                <td><span class="car-tag new">工信部公示中</span></td>
+              </tr>
+              <tr data-brand="xiaomi">
+                <td><strong style="color:var(--brand-xiaomi)">小米</strong></td>
+                <td>持续交付中</td>
+                <td><span class="car-name">SU7 Ultra</span></td>
+                <td><span class="car-price">52.99–81.49</span></td>
+                <td>性能发烧友、科技尝鲜者、品牌认同者</td>
+                <td>中大型轿车</td>
+                <td>XLA认知大模型架构首次披露（跨模态端到端）；赛道/通勤双模切换；交付持续进行</td>
+                <td><span class="car-tag hot">持续交付</span></td>
+              </tr>
+              <tr data-brand="xiaomi">
+                <td><strong style="color:var(--brand-xiaomi)">小米</strong></td>
+                <td>即将发布</td>
+                <td><span class="car-name">YU7</span></td>
+                <td><span class="car-price">待公布</span></td>
+                <td>家庭SUV用户、小米生态深度用户</td>
+                <td>中大型SUV</td>
+                <td>首款SUV产品；XLA大模型加持；预计5月前有重要OTA推送</td>
+                <td><span class="car-tag new">即将发布</span></td>
+              </tr>
+              <tr data-brand="vw">
+                <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                <td>4/8发布，4/16上市</td>
+                <td><span class="car-name">与众08</span></td>
+                <td><span class="car-price">23.99–29.99</span></td>
+                <td>关注智能化体验的德系品质偏好者、新势力对比选购群体</td>
+                <td>中型纯电SUV</td>
+                <td>800V高压平台；大众×小鹏联合开发；Momenta智驾方案；金标大众旗舰产品</td>
+                <td><span class="car-tag hot">上市</span></td>
+              </tr>
+              <tr data-brand="vw">
+                <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                <td>3/30预售开启</td>
+                <td><span class="car-name">ID.ERA 9X</span></td>
+                <td><span class="car-price">32.98–37.98</span></td>
+                <td>合资品牌增程SUV需求者、传统燃油车换购中产</td>
+                <td>中大型增程SUV</td>
+                <td>大众首款增程SUV；Momenta R7端到端智驾模型；大容量增程电池；纯电续航200km+，综合续航1200km+</td>
+                <td><span class="car-tag hot">预售中</span></td>
+              </tr>
+              <tr data-brand="vw">
+                <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                <td>4/8发布，4/24车展首秀</td>
+                <td><span class="car-name">ID.AURA T6</span></td>
+                <td><span class="car-price">待定价</span></td>
+                <td>科技爱好者、智能驾驶早期采用者</td>
+                <td>中型纯电SUV</td>
+                <td>CEA电子电气架构；地平线征程6芯片+智驾方案；大众在华软件自研里程碑产品</td>
+                <td><span class="car-tag new">车展首秀</span></td>
+              </tr>
+              <tr data-brand="vw">
+                <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                <td>4月中旬全球首发</td>
+                <td><span class="car-name">ID.3 Neo</span></td>
+                <td><span class="car-price">待定价</span></td>
+                <td>海外市场用户（与国内暂无直接关联）</td>
+                <td>紧凑型两厢车</td>
+                <td>ID.3中期改款；海外市场专属；设计与技术升级；中国市场暂无引进计划</td>
+                <td><span class="car-tag new">全球首发</span></td>
+              </tr>
+              <tr data-brand="vw">
+                <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                <td>4/21媒体之夜全球首秀</td>
+                <td><span class="car-name">大众×小鹏联合新车型</span></td>
+                <td><span class="car-price">待定</span></td>
+                <td>关注大众与小鹏合作成果的科技购车群体</td>
+                <td>待公布</td>
+                <td>双方联合开发；基于小鹏EEA电子电气架构；搭载小鹏XNGP智驾方案；合作深度里程碑</td>
+                <td><span class="car-tag new">全球首秀</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top:14px;padding:12px 14px;background:#f9fafb;border-radius:8px;font-size:12.5px;color:var(--text-secondary);line-height:1.65;">
+            <strong style="color:var(--text-primary)">本周新车格局观察：</strong>高端市场被蔚来ES9（42万起）和问界M9改款牢牢占据，中间地带由问界M6（爆款预订数据）和小鹏MONA M03（智驾平权）分别从不同角度切入。本周最大看点是大众密集发布——与众08（4/16上市）、ID.ERA 9X（首款增程SUV预售中）、ID.AURA T6（4/24车展首秀）以及大众×小鹏联合新车型（4/21首秀），传统合资阵营正式从"追赶"转向"正面竞争"。北京车展（4/24）后预计将有更多新车型集中亮相。
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <!-- ===== REPORT 5: 4/14–4/20 ===== -->
+    <div class="report-card"
+         id="r5"
+         data-date="20260414-20260420"
+         data-brands="nio xiaomi li xpeng huawei vw">
+
+      <div class="report-header">
+        <div class="report-date">2026年4月14日 – 4月20日</div>
+        <div class="report-title">新能源汽车行业周报</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+          <span class="brand-tag vw">大众</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box">
+        <div class="summary-box-label">本周一句话总结</div>
+        北京车展前"前奏周"：理想L9全球首发（旗舰Livis版55.98万）、华为ADS 5.0技术大会定档4月23日、蔚来ES9预售发酵持续。小米周订单环比骤降26%而理想逆势+10%，舆论焦点已从"产品发布"切换为"车展前哨站"与"旗舰算力军备赛"。
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">2026年是旗舰SUV的"正面决战年"，算力成为核心参数</div>
+              蔚来ES9（神玑NX9031，5nm，单颗算力超四颗Orin-X）、全新理想L9（算力达2560TOPS，四颗激光雷达）、小鹏新旗舰等多款50万+旗舰SUV将在北京车展同台竞争，各品牌以"单车可用算力"定义旗舰。中国高端纯电市场从"空间+续航"之争正式进入"智驾算力+软件体验"的下一轮竞争。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">华为ADS 5.0"技术普惠"路线已明，4月23日发布</div>
+              定价策略将大幅下探，覆盖15万级以上80余款车型，以"技术普惠"定义竞争优势。相较于蔚来、小鹏的"垂直整合"路线，华为走的是"平台赋能多品牌"路线，本质是"能力深度 vs. 覆盖广度"的分岔，需关注用户渗透数据印证哪条路更快。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">小米热度与订单"剪刀差"值得警惕</div>
+              XLA认知大模型宣传内容本周持续高热，但德银周订单数据显示小米汽车第15周周订单环比骤降26%至8430辆，为五大品牌中降幅最大。热度与订单走势背离，可能与SU7上市初期缺乏新鲜感、车展前持币观望有关。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              ES9搭载自研5nm芯片<strong>神玑NX9031</strong>，官方称单颗算力超四颗Orin-X，配合天枢NAD系统；4月9日预售后，媒体和B站博主对"ES9天行底盘+智驾"的体验内容持续发酵。蔚来率先将自研高端智驾芯片量产上车，是国产自研智驾芯片商业化的重要里程碑。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              <strong>XLA认知大模型</strong>本周官方深度讲解（陈龙博士主讲），核心亮点：融入"强化学习+世界模型"，初代SU7及YU7将通过5月起分批OTA获取萌宠互动、模糊语义导航、辅助驾驶优化等新功能。B站"卧薪尝胆两年，终于智驾上桌？"视频引发讨论，也揭示小米智驾仍处于补课阶段。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              ADS 5.0本周仍处预热阶段，4月23日在北京国家网球中心举行<strong>乾崑技术大会</strong>发布。外部测试者已有亲测体验流出，评价为"升级有点狠"，城区NCA体验大幅提升。问界M8车主对ADS 5.0是否提供"史诗级OTA回馈"保持强烈期待。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              <strong>MONA M03累计交付突破25万台</strong>（4月13日官宣），连续18个月蝉联10—20万纯电轿车销冠；M03旗舰Ultra SE版双图灵AI芯片1500TOPS、第二代VLA配置引发行业关注，被认为是"低价格+顶级智驾"的标杆组合。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              全新L9北京车展首发官宣（4月15日），配备<strong>4颗激光雷达、算力达2560TOPS</strong>，旗舰Livis版55.98万元，被视为理想在高端智驾赛道的最强一击。此前"VLA司机大模型"方向已有OTA积累，新L9将承接并强化这一路线。
+            </div>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              本周大众ADAS暂无独立动态。与众08上市后的IQ.Drive Pro系统用户反馈正在积累中，ID.ERA 9X的Momenta R7端到端智驾模型进入交付前的最后测试阶段。北京车展（4/24）上大众与小鹏联合新车型有望公布更多智驾参数。
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              <strong>XLA认知大模型</strong>核心定位是"认知层"——让辅助驾驶理解意图而非执行规则。技术路径：多模态输入 + Xiaomi MiMo-Embodied具身基座模型，支持语音控制行车与泊车、商场地库车位级领航。小米将VLA与世界模型定义为"互补而非替代"，实际上路效果仍需OTA后大规模验证。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              ES9"天枢系统"智能座舱AI架构引发讨论——基于自研<strong>Cedar（雪松）OS</strong>，强调座舱-智驾融合。NOMI GPT已在ET9上实现端云多模态，ES9上是否延伸尚待正式上市说明书确认。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              <strong>第二代VLA（VLA 2.0）</strong>率先在MONA M03 Ultra SE版量产上车，强调"全场景都能开"，Q3将OTA推送至Max版。这是国内第一批将VLA 2.0量产落地的案例，行业意义明显。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              <strong>盘古车载大模型</strong>计划随ADS 5.0同步升级，具体能力待4月23日技术大会披露。鸿蒙座舱6也将在同期发布，预计带来AI交互重大升级。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              MindVLA-o1底层更新持续推进，新L9的2560TOPS算力平台将支持更复杂的端到端推理。本周无独立AI发布。
+            </div>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              大众车载AI仍主要依赖CARIAD软件部门推进。ID.AURA T6搭载的CEA架构与地平线征程6芯片组合，是大众在华AI自研落地的关键一步，北京车展后预计有更多路线图披露。
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              本周无推送，已官宣：萌宠互动、个性音效、模糊语义导航、辅助驾驶优化等功能预计<strong>5月起分车型批量推送</strong>（初代SU7全系及YU7）。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              无OTA推送，ES9仍处预售阶段，预计<strong>5月底正式上市</strong>后将有NAD相关OTA随车到来。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              本周暂无新OTA推送公告，关注北京车展后新L9上市带来的软件同步升级节奏。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              ADS 4.x版本车型等待ADS 5.0 OTA推送路径公告，<strong>4月23日技术大会</strong>后预计有明确权益说明。问界M8车主对"能否免费OTA"关注度极高。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              2026款MONA M03（4月2日上市）已随车搭载第二代VLA，新版OTA功能暂未另行公告。
+            </div>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              ID系列保持常规OTA节奏，主要聚焦车机系统稳定性优化与地图数据更新。与众08上市后的首次OTA预计5月推送。本周无重大版本发布。
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              ES9搭载<strong>"九霄天琴"声学系统</strong>与天行智能底盘，座舱品质导向鲜明。神玑NX9031不仅承担智驾计算，也负责座舱AI推理，实现<strong>"驾舱一芯"</strong>，HMI服务于"行政旗舰"的高端静谧定位。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              <strong>鸿蒙座舱6</strong>与ADS 5.0将在4月23日同步发布，预计带来重大HMI升级。本周暂无官方内容披露，舆论预期较强。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              第二代VLA的落地本质上也是HMI交互模式的升级——系统能够<strong>理解模糊语义</strong>，减少驾驶员手动确认频次，是从"按键触控"向"意图理解"的实质性进化。
+            </div>
+            <div class="tech-block" data-brand="xiaomi li">
+              <span class="tech-brand-name xiaomi">小米</span><span class="tech-brand-name li">理想</span>
+              <span class="no-content">本周HMI讨论更多作为新车/OTA升级的一部分被提到，没有单独的HMI专项更新。</span>
+            </div>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              与众08的座舱是大众在华最激进的一次HMI尝试——联合小鹏开发的交互逻辑更接近手机操作习惯，但信息层级与德系克制设计仍有拉扯。ID.AURA T6的CEA架构能否带来更流畅的HMI体验，北京车展值得关注。
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">ES9官方发布视频持续传播；"驾乘皆舒适，蔚来ES9有多稳？"香槟塔稳定性测试视频热度延续至本周。<a href="https://www.bilibili.com/video/BV1DcDDBHEkv/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">ES9租电预售42万起、5月底正式上市报道；北京车展重磅新车预告均含ES9。<a href="https://www.autohome.com.cn/news/202604/1313475.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">ES9基本报道覆盖；首季交付量超预期解读。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">ES9发布后预计有大量车主/KOC测评笔记，暂无可核实链接。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">极高热度，"卧薪尝胆两年，终于智驾上桌？"XLA智驾深度体验视频引发"小米智驾进步了多少"讨论热潮。<a href="https://www.bilibili.com/video/BV1DJoFBZE5n/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">新一代SU7 OTA计划说明；XLA认知大模型技术解析有单独深度报道。<a href="https://www.ithome.com/0/937/589.htm" target="_blank">IT之家 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">相关报道主要以转载为主，无高热原创内容。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">围绕"XLA升级了什么"的讨论持续。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">暂无本周理想专属爆款内容，部分"北京车展看什么"汇总视频包含全新L9介绍。</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">全新L9北京车展首发报道（四激光雷达/六座旗舰），旗舰Livis版55.98万元。<a href="https://chejiahao.autohome.com.cn/info/25227687" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">有L9北京车展参展报道。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">理想汽车法务部维权声明（4月11日）在本周引发舆论关注，属品牌舆情事件。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">MONA M03 25万台交付里程碑后，多条博主围绕"25万台背后00后年轻用户"的讨论内容。</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">2026款MONA M03上市报道延续；3月销量解析（27415台）。<a href="https://auto.cctv.cn/2026/04/03/ARTIZLgZFB5yliRa4xxkFBzM260403.shtml" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">MONA M03累计25万台报道有收录。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">00后交车笔记持续，颜值与性价比种草为主流。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">华为汽车（问界/智界/享界/尚界）</div>
+              <div class="platform-row"><span class="platform-badge">B站/抖音</span><div class="platform-content">ADS 5.0技术预热内容有媒体官号发布；抖音博主"汽车界石头"ADS 5.0亲测体验视频（4月19日，89万点赞）为本周最高热度华为相关内容。</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">"15万级福音！华为ADS 5.0来了"报道；问界M8车主能否获"史诗级OTA"讨论。<a href="https://k.sina.com.cn/article_7880068201_1d5b04c6901901ytxa.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">ADS 5.0相关内容有覆盖（主要转载自华为官方与媒体）。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">有问界用户对ADS 5.0期待的讨论。</div></div>
+            </div>
+
+          
+            <div class="brand-overview" data-brand="vw">
+              <div class="brand-overview-name" style="color:var(--brand-vw)">大众汽车</div>
+              <div class="platform-row"><span class="platform-badge">综合</span><div class="platform-content">本周大众内容较少，主要围绕与众08上市后的用户初体验与ID.ERA 9X预售推进。北京车展（4/24）上大众×小鹏联合新车型的首秀将是大众本周最重要的后续看点。</div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">ID.系列销量追踪与竞品对比讨论活跃。</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 热点分析 -->
+        <div class="section" data-topic="analysis">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-analysis">🔍</div>
+            <div class="section-title">本周热点内容分析</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="analysis-block">
+              <div class="analysis-h">理想L9全球首发 — 55.98万旗舰对标问界M9</div>
+              全新L9以2560TOPS算力+4颗激光雷达的硬核配置，55.98万Livis旗舰版定价直接对标问界M9高端版本。这是理想品牌向上突破的明确宣示，也是"VLA司机大模型"路线在旗舰车型上的最强落地。北京车展首发后，市场对其实际交付节奏的关注将迅速升温。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">华为ADS 5.0"技术普惠" — 颠覆智驾定价逻辑</div>
+              "15万级覆盖80余款车型"的普惠定价方向已基本坐实，是对"高算力智驾只服务高端车"认知的直接颠覆。相比蔚来、小鹏的垂直整合路线，华为走"平台赋能"路线，行业格局影响不容低估。4月23日技术大会将是验证信号。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">小米订单骤降26% — "等等党"效应还是竞争分流？</div>
+              德银周订单数据显示小米第15周环比-26%至8430辆，为五大品牌中降幅最大。消费者在北京车展前"持币观望"心态、竞品旗舰密集发布分流效应、以及SU7上市初期市场消化，共同造成短期波动。后续是否反弹需观察车展期间新品加持。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">MONA M03 25万台 — "低价格+可用智驾"路线的里程碑验证</div>
+              从2024年8月首批交付至今约20个月达成，连续18个月蝉联A级纯电轿车销冠。证明了"设计+智驾+性价比"在10万元级别的可行性，也是对小鹏整体企业信心的正向佐证。M03 Ultra SE版的双图灵AI芯片更是"智驾平权"的极致案例。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r5 -->
+
+        <!-- ===== REPORT 4: 4/7–4/13 ===== -->
+    <div class="report-card"
+         id="r4"
+         data-date="20260407-20260413"
+         data-brands="nio xiaomi li xpeng huawei vw">
+
+      <div class="report-header">
+        <div class="report-date">2026年4月7日 – 4月13日</div>
+        <div class="report-title">新能源汽车行业周报</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+          <span class="brand-tag vw">大众</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box">
+        <div class="summary-box-label">本周一句话总结</div>
+        蔚来以ES9技术发布会正式进军50万级超豪华市场，华为问界M6开启预订20天即破10万单，新能源高端化竞争全面提速，各家AI大模型与端到端技术迭代成为核心叙事。
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">高端化竞赛全面升温</div>
+              蔚来ES9以42万元起预售价发布，搭载5nm旗舰芯片神玑NX9031与31传感器方案，正面对标奔驰GLE与宝马X5；华为问界M6在4月11日正式公布预售，20天内累计预订突破10万单，成为本周最具传播势能的事件。高端产品的密集落地是行业向上突破传统BBA燃油阵地的集体表态。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">AI大模型成为差异化核心叙事</div>
+              小米于4月8日通过36氪专访首度公开XLA（跨模态学习与行动）认知大模型架构，强调感知-决策端到端一体化；小鹏VLA 2.0于4月7日完成全量推送，基于X-World世界模型实现长程场景预测；理想MindVLA-o1持续迭代中。各家在"大脑"层面的比拼已从功能点转向架构层面的博弈。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">交付数据呈现分化态势</div>
+              蔚来Q1交付83,465辆（同比+98.3%），展现强劲复苏；小米Q1约3.7万辆，距全年55万辆目标仍有压力但热度维持；理想i6第10万辆下线（4月10日），新L8 Livis进入工信部目录，产品矩阵扩张稳步推进。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">北京车展（4月24日）将成为近期最大催化剂</div>
+              华为ADS 5.0、问界全系新品及多款重磅车型将集中亮相，预计下周行业信息量进一步放大。蔚来ES9技术发布会（4月9日）和问界M6预订破10万（4月11-12日）已为本轮预热拉开序幕。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              ES9发布会上首次公布<strong>31传感器融合方案</strong>（含超远距激光雷达+4D毫米波雷达），配合<strong>神玑NX9031</strong>（5nm SoC，算力超400 TOPS）实现全栈自研感知与规划，被视为NAD方案迭代最大跃升。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              <strong>ADS 5.0即将于4月24日北京车展正式发布</strong>，官方描述为"无限接近人类驾驶直觉"。同步宣布将为2024款问界M9用户免费升级896线激光雷达（计划6月前完成，价值约1万元/台）。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              <strong>VLA 2.0</strong>（视觉-语言-行动模型）于4月7日完成全量OTA推送，基于X-World世界模型实现长程场景预测与低速复杂路况决策能力提升。<strong>天玑AIOS 6.1.0</strong>同步上线。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              首度公开<strong>XLA认知大模型</strong>架构——跨模态学习与行动框架，统一视觉、语言、传感器数据建模，实现感知-决策端到端一体化，目前处于技术披露阶段。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              MindVLA-o1通过OTA 8.4持续更新，高速NOA泊入车位等细节场景有优化，本周无独立技术发布。
+            </div>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              本周暂无独立ADAS动态。<strong>ID.UNYX 与众</strong>的 IQ.Drive 辅助驾驶系统持续迭代中，但与新势力在大模型智驾叙事上仍有差距。大众-小鹏技术合作的落地成果值得跟踪。
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              <strong>XLA认知大模型</strong>是本周最具技术含量的AI披露——通过跨模态联合学习实现感知理解与驾驶决策统一，摆脱过去"感知模型+规划算法"分模块架构的局限。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              <strong>NOMI Mate</strong>搭载于ES9，支持多轮对话与主动车内语境感知（疲劳检测、情绪感知），与神玑芯片车端算力深度绑定，实现低延迟本地推理。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              AI能力集中在VLA 2.0与X-World世界模型的协同上，天玑AIOS 6.1.0中"小P"助手自然语言理解与指令执行能力更新。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              <strong>盘古车载大模型</strong>计划随ADS 5.0升级，强调意图理解与自然语言导航指令处理，具体能力待北京车展披露。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              MindVLA-o1底层更新持续推进中，本周无独立AI发布。
+            </div>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              大众在车载 AI 方面主要依赖<strong>CARIAD 软件</strong>部门推进，与小鹏达成电子电气架构合作后，AI 能力的上车节奏成为行业关注焦点。目前公开信息有限，预计在北京车展前后会有更明确的路线图披露。
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              本周OTA最明确：<strong>天玑AIOS 6.1.0 / 4月7日</strong>——VLA 2.0全量推送，智驾体验优化，AI助手"小P"响应速度与上下文理解提升。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              <strong>OTA 8.4 / 4月1日</strong>已完成推送，本周处于用户反馈期，MindVLA底层更新与能耗优化收到正面评价。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              官宣<strong>5月前为存量SU7/YU7用户推送重要OTA</strong>（内容未公布）。配合XLA大模型的技术路线铺垫。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              ADS 5.0预告：<strong>4月24日北京车展发布</strong>；896线激光雷达升级计划于6月前落地。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              随ES9产品线推出<strong>神玑NX9031平台OTA架构更新</strong>（新车随交付），暂无存量车型大规模OTA推送。
+            </div>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              ID 系列保持常规 OTA 节奏，主要聚焦车机系统稳定性优化与地图数据更新。本周无重大版本发布。
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              ES9延续NIO Sky全景体验，主副驾独立超宽显示屏，新增<strong>NOMI Mate语音交互</strong>与基于情绪感知的氛围调节，定位"情感化智能座舱"。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              天玑AIOS 6.1.0中，AI助手"小P"支持基于地图的自然语言导航（如"帮我找个离高速出口近的充电站"），交互更自然。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              <strong>HiCar 4.0与鸿蒙车机深度整合</strong>在问界M6上首发，强调手车流转与多设备协同；问界M9将向ADS 5.0界面范式升级。
+            </div>
+            <div class="tech-block" data-brand="xiaomi li">
+              <span class="tech-brand-name xiaomi">小米</span><span class="tech-brand-name li">理想</span>
+              <span class="no-content">本周HMI讨论更多作为新车/OTA升级的一部分被提到，没有单独的HMI专项更新。</span>
+
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              ID.UNYX 与众的车机基于 MEB 平台最新一代系统，界面风格偏向传统德系克制设计，交互逻辑与手机 App 联动较强。整体 HMI 策略正在从"功能堆砌"向"场景化服务"过渡，但进度慢于新势力。
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">#蔚来ES9 话题播放量迅速增长，官方账号及科技UP主跟进技术解析。<a href="https://www.bilibili.com/video/BV1V69jBBEz3/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">高价值，ES9产品详情页与技术参数解读上线；用户热议"能否终结BBA大型SUV格局"。<a href="https://www.autohome.com.cn/news/202604/1313267.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">ES9预售信息及参数对比覆盖；用户问答热度较高。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">车内实拍、座舱体验笔记陆续出现；主要为媒体探营内容。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">极高热度，XLA技术讲解视频大量转载解读；SU7 Ultra实拍与测评笔记持续高热。<a href="https://www.bilibili.com/video/BV17S9wBKEGk/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">36氪</span><div class="platform-content">核心来源——小米XLA认知大模型首次公开报道。<a href="https://www.ithome.com/0/935/527.htm" target="_blank">IT之家转载 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">MONA M03销量与用户口碑活跃；37分钟万订数据广泛传播。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">SU7 Ultra实拍与测评持续；女性用户"通勤好伴侣"类内容多。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">i6下线直播视频转发；李想本人发微博话题带动流量。<a href="https://www.bilibili.com/video/BV1HHXkBXEFJ/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">新L8 Livis工信部第406批目录曝光解读；i6用车攻略内容较多。<a href="https://www.autohome.com.cn/news/202604/1313325.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">i6销量数据讨论热；L系列保值率分析活跃。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">暂无明显爆款，以理性测评为主。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">极高热度，VLA 2.0实测视频大量涌现，测评UP主贡献主要流量。<a href="https://www.bilibili.com/video/BV1cEQCBDELx/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">X-World技术解读；MONA M03参数与对比文章活跃。<a href="https://www.autohome.com.cn/news/202604/1313329.html" target="_blank">链接 1 ↗</a> <a href="https://chejiahao.autohome.com.cn/info/25089922" target="_blank">链接 2 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">MONA M03用户讨论热度最高；VLA实测UGC内容丰富。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">MONA M03颜值与性价比种草内容为主流。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">华为汽车（问界/智界/享界/尚界）</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">问界M6宣传片与发布解读流量极高；M9激光雷达升级分析内容多。</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">M6产品页上线；M9升级路线与ADS 5.0预热文章活跃。</div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">M6竞品对比内容热；M9保值与性能讨论持续。</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">M6内饰实拍与华为全家桶协同体验分享为主流。</div></div>
+              <div class="platform-row"><span class="platform-badge">公众号补充</span><div class="platform-content"><a href="https://news.qq.com/rain/a/20260411A05OCV00" target="_blank">腾讯新闻：问界M6预订破10万 ↗</a> / <a href="https://hima.auto/" target="_blank">鸿蒙智行官网 ↗</a></div></div>
+            </div>
+
+          
+            <div class="brand-overview" data-brand="vw">
+              <div class="brand-overview-name" style="color:var(--brand-vw)">大众汽车</div>
+              <div class="platform-row"><span class="platform-badge">综合</span><div class="platform-content">本周以 ID.UNYX 与众的市场反馈和 CARIAD 技术合作为主轴内容。作为传统合资代表，大众在新势力主导的"大模型+智驾"话语体系中存在感偏弱，但其庞大的基盘用户和渠道优势仍是不可忽视的基本面。</div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">ID.系列销量追踪与竞品对比讨论活跃。</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 热点分析 -->
+        <div class="section" data-topic="analysis">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-analysis">🔍</div>
+            <div class="section-title">本周热点内容分析</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="analysis-block">
+              <div class="analysis-h">蔚来ES9 vs 奔驰GLE — 50万级SUV格局重写？</div>
+              ES9 42万起的定价，配合神玑芯片+31传感器+超长续航，是蔚来迄今最直接对标BBA旗舰SUV的产品。B站与汽车之家的用户讨论呈明显分化：支持方认为"同价位BBA已无技术优势"，质疑方关注品牌溢价与保值率。这场定价博弈将是2026上半年最受关注的议题之一。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">华为免费升级896线雷达 — 硬件订阅制的颠覆</div>
+              为存量问界M9用户"免费"升级价值约1万元的激光雷达，引发业内广泛讨论。一方面体现软硬一体化生态的强大粘性，另一方面也引发关于"硬件倒贴绑定用户"的争议。传统OTA只升级软件，华为将"硬件也可以OTA"向大众普及，可能重塑用户对汽车资产价值的认知。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">VLA模型之争 — 小鹏vs小米vs蔚来的技术路线对决</div>
+              本周三家同时有VLA/端到端动作：小鹏VLA 2.0全量推送、小米XLA首次公开、蔚来ES9搭载感知决策一体芯片。B站科技区多位百万UP主制作横评内容，核心争议集中在"谁的世界模型泛化能力更强"。端到端技术是未来1-2年智能驾驶竞争的决定性赛道。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">MONA M03 — 10万级纯电爆款的持续发酵</div>
+              37分钟万订的销售数据在各平台广泛传播，小红书上颜值+性价比种草持续涌现，懂车帝评分居同级前列。其成功是否能支撑小鹏整体盈利改善，是投资者关注焦点。"设计+智驾+性价比"的组合证明了在10万元级别的可行性。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r4 -->
+
+<!-- ===== REPORT 3: 3/31–4/6 ===== -->
+    <div class="report-card"
+         id="r3"
+         data-date="20260331-20260406"
+         data-brands="nio xiaomi li xpeng huawei">
+
+      <div class="report-header">
+        <div class="report-date">2026年3月31日 – 4月6日</div>
+        <div class="report-title">新能源汽车行业周报</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box">
+        <div class="summary-box-label">本周一句话总结</div>
+        本周行业关键词不是"全面爆发"，而是"主力车型改款落地 + OTA体验升级 + 内容热度明显分化"：蔚来用"5566"年度改款稳住基本盘，小米靠雷军拆车直播拿走全网流量，小鹏用MONA M03把图灵AI芯片压到更低价位，理想则用OTA 8.4证明自己仍在打磨体验，华为汽车本周新增内容相对少，但ADS 5.0的4月预热依然维持了技术存在感。
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">本周最强信号是"年度改款"和"配置下放"同时发生</div>
+              主流新势力都不再只讲概念，而是在主销车型上做更具体的年度焕新。4月2日，蔚来2026款ET5、ET5T、ES6、EC6同步上市，重点不是颠覆式换代，而是设计、配置和智驾体验的系统性补强；同一天，小鹏2026款MONA M03上市，把图灵AI芯片、750TOPS算力和更完整的智驾配置继续往15万元以内市场压；小米则用雷军拆车直播把产品结构、车身安全、底盘与电池包细节直接公开。行业内容逻辑已从"讲故事"转向"讲具体升级点"。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">本周的技术主线不是参数竞赛，而是"体验可感知"</div>
+              理想OTA 8.4是一个典型的信号。讨论热度集中在VLA司机大模型优化、行车舒适性、通行效率、停止模式和单踏板使用体验，都是车主能在一两次通勤里感知到的改动。蔚来"5566"改款和Cedar/Cedar S系统升级也是类似方向。小鹏MONA M03的传播也不是单纯宣传芯片，而是把"图灵AI芯片进入更低价格带"包装成"智驾平权"叙事。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">内容热度分化明显：小米拿走流量，小鹏拿走产品讨论，理想靠OTA稳定口碑</div>
+              从公开网页、B站视频、汽车垂媒和社交平台讨论密度看，本周流量第一梯队仍是小米，原因是雷军亲自下场拆车，这种高透明度动作天然适合传播。小鹏在产品讨论层面最有存在感，MONA M03的新增配置、价格带和图灵AI芯片带来了较强讨论度。理想虽然没有发布重磅新车，但OTA 8.4在车主圈层内获得了比预期更好的反馈。华为汽车本周处于春季发布会后的延续期，新增爆点较少，但ADS 5.0预热仍在维持关注度。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              2026款MONA M03把<strong>图灵AI芯片</strong>与<strong>750TOPS算力</strong>下放到更低价格区间（11.98万-15.18万元），强化了"低价位也可以拥有更完整智驾能力"的市场心智。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              2026款"5566"继续把智驾体验升级作为年度改款核心卖点之一，"小蓝灯"等配置细节和智驾体验升级是传播重点。ES9技术发布会定于<strong>4月9日</strong>，将展示"SkyRide·天行"底盘系统。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              本周新增动作不多，但<strong>ADS 5.0将在4月发布</strong>的预热仍是行业高频话题。一旦正式落地，对问界、智界、享界和尚界的影响将是系统性的。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              雷军拆车直播展示了新一代SU7的车身结构、电池安全与底盘细节，强化了产品安全与工程质量的用户认知。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              <span class="no-content">本周无新ADAS硬件动态，主要围绕OTA 8.4的智驾体验优化。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              OTA 8.4继续围绕<strong>VLA司机大模型优化</strong>展开，重点不在抽象能力，而在通行效率、舒适性和交互链路是否更顺。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              AI能力更多体现在芯片和智驾链路上，MONA M03的传播事实上是在回答：AI算力能不能下探到更主流的大众市场。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              AI部分主要仍体现在Cedar/Cedar S系统与智能座舱协同能力延续上，本周外部讨论度不如新车改款本身高。
+            </div>
+            <div class="tech-block" data-brand="xiaomi huawei">
+              <span class="tech-brand-name xiaomi">小米</span><span class="tech-brand-name huawei">华为</span>
+              <span class="no-content">本周暂无专项AI能力发布。华为ADS 5.0的AI推理能力预计将在4月正式发布后揭晓。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              本周最明确的OTA得分项。<strong>OTA 8.4</strong>围绕辅助驾驶和智能座舱双线展开，升级点包括VLA大模型优化、行车舒适性改进、通行效率提升、停止模式和单踏板体验优化。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              Cedar与Cedar S 1.4.0仍构成当前用户对其智能系统能力的评价基础，本周无新大版本推送。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              本周更多围绕ADS 5.0和车型升级预热，而非明确OTA落地。
+            </div>
+            <div class="tech-block" data-brand="xpeng xiaomi">
+              <span class="tech-brand-name xpeng">小鹏</span><span class="tech-brand-name xiaomi">小米</span>
+              <span class="no-content">本周无OTA推送。小鹏核心通过新车上市重新定义智能化能力定价，小米重心在拆车直播。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              雷军拆车直播虽然本质不是HMI发布，但显著提升了外界对内饰用料、车机布局与整车交互一致性的关注度，属于"用拆解反向强化HMI感知"的传播方式。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              OTA 8.4中与Livis眼镜、理想AI和座舱协同相关的更新，延续了其在"车内交互连续性"上的优势。
+            </div>
+            <div class="tech-block" data-brand="nio xpeng">
+              <span class="tech-brand-name nio">蔚来</span><span class="tech-brand-name xpeng">小鹏</span>
+              <span class="no-content">本周HMI讨论更多是作为新车升级的一部分被提到，没有单独的HMI专项更新。</span>
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              <span class="no-content">本周暂无HMI相关更新。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">有内容，以资讯解读和车主讨论为主，热度不如小米/小鹏。<a href="https://www.bilibili.com/video/BV1V69jBBEz3/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">高价值，直接覆盖2026款ET5/ET5T/ES6/EC6上市前后的升级信息。<a href="https://www.autohome.com.cn/news/202604/1313267.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">公众号补充</span><div class="platform-content"><a href="https://www.ithome.com/0/934/775.htm" target="_blank">IT之家：蔚来"5566"车型更新 ↗</a> / <a href="https://news.qq.com/rain/a/20260404A05OCV00" target="_blank">腾讯新闻：2026款蔚来5566上市 ↗</a></div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">极高热度，拆车直播相关切片、二创和讨论密集，本周汽车内容流量中心之一。<a href="https://www.bilibili.com/video/BV17S9wBKEGk/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">以论坛和车型页讨论为主，偏用户围观和参数回看。<a href="https://club.autohome.com.cn/bbs/thread/255acc45938f8b82/114752389-1.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">公众号补充</span><div class="platform-content"><a href="https://news.qq.com/rain/a/20260401A03RHH00" target="_blank">腾讯新闻：雷军明晚直播拆车 ↗</a> / <a href="https://www.ithome.com/0/935/527.htm" target="_blank">IT之家：雷军总结拆车直播 ↗</a></div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">用户快速教学和体验反馈，内容聚焦"停止模式/单踏板"是否实用。<a href="https://www.bilibili.com/video/BV1HHXkBXEFJ/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">高价值，系统梳理了OTA 8.4在VLA大模型、座舱与交互侧的升级。<a href="https://www.autohome.com.cn/news/202604/1313325.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">公众号补充</span><div class="platform-content"><a href="https://news.qq.com/rain/a/20260401A01P0500" target="_blank">腾讯新闻：理想OTA 8.4 ↗</a> / <a href="https://k.sina.com.cn/article_7880068201_1d5b04c6902001y4b6.html" target="_blank">新浪：理想OTA 8.4悄悄推送了？ ↗</a></div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">大量首发解读、老车主对比和升级点梳理，讨论质量较高。<a href="https://www.bilibili.com/video/BV1cEQCBDELx/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">高价值，能快速看清新车价格、版本和升级重点。<a href="https://www.autohome.com.cn/news/202604/1313329.html" target="_blank">链接 1 ↗</a> / <a href="https://chejiahao.autohome.com.cn/info/25089922" target="_blank">链接 2 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">公众号补充</span><div class="platform-content"><a href="https://auto.cctv.com/2026/04/03/ARTIZLgZFB5yliRa4xxkFBzM260403.shtml" target="_blank">央视网：2026款小鹏MONA M03上市 ↗</a> / <a href="https://news.qq.com/rain/a/20260403A03MMG00" target="_blank">腾讯新闻：图灵芯片上车 ↗</a></div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">华为汽车（问界/智界/享界/尚界）</div>
+              <div class="platform-row"><span class="platform-badge">综合</span><div class="platform-content">本周处于上周发布会余波延续期，新增爆点偏少。ADS 5.0将在4月发布的预热仍在持续。<a href="https://hima.auto/" target="_blank">鸿蒙智行官网 ↗</a> / <a href="https://k.sina.cn/article_7880068201_1d5b04c6901901w8ss.html" target="_blank">华为ADS 5.0官宣4月发布 ↗</a></div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 热点分析 -->
+        <div class="section" data-topic="analysis">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-analysis">🔍</div>
+            <div class="section-title">本周热点内容分析</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="analysis-block">
+              <div class="analysis-h">4月2日成了本周的分水岭</div>
+              蔚来"5566"改款上市、小鹏MONA M03上市、雷军拆解新SU7——三件事集中到一天。蔚来代表"主销车型稳定迭代"，小鹏代表"技术和价格带重新定锚"，小米代表"把品牌透明度变成传播武器"。三种打法分别对应了三个不同的增长逻辑。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">最有传播力的不一定是最有技术含量</div>
+              从技术密度看，小鹏MONA M03把图灵AI芯片拉到更低价位，理想OTA 8.4对VLA和交互体验的优化，也许都比拆车直播更"硬"。但从传播效率看，小米显然赢得更多。如果只想用最少时间判断本周舆情重心，小米是必须看的；但如果关心产品趋势本身，小鹏和理想反而更值得细看。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">本周真正值得持续跟踪的是"下一周会发生什么"</div>
+              蔚来"5566"上市后，市场会看4月9日ES9技术发布会能否进一步抬高品牌技术形象；小鹏MONA M03上市后，要验证订单和用户口碑能否接住"图灵芯片下放"的叙事；理想OTA 8.4之后，观察是否能稳定住存量用户信心；华为汽车要看ADS 5.0正式发布后能否把本周偏弱的新增内容热度重新拉起来。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r3 -->
+
+
+    <!-- ===== REPORT 2: 3/24–3/30 ===== -->
+    <div class="report-card"
+         id="r2"
+         data-date="20260324-20260330"
+         data-brands="nio xiaomi li xpeng huawei">
+
+      <div class="report-header">
+        <div class="report-date">2026年3月24日 – 3月30日</div>
+        <div class="report-title">新能源汽车行业周报</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box">
+        <div class="summary-box-label">本周一句话总结</div>
+        本周是内容相当密集的一周：小米新一代SU7上市首周完成首批交付并引发全网讨论；华为鸿蒙智行春季发布会8车齐发覆盖四大品牌；蔚来全新ES8获中保研"史上最严"新规五项全优；与此同时，"蔚小理"三家首次实现同期季度盈利，行业进入新阶段。<strong>信息量偏大，建议关注产品和财务两条主线。</strong>
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">"蔚小理"首次同季盈利，新势力进入自我造血阶段</div>
+              蔚来（Q4经营利润12.5亿）、小鹏（Q4净利润3.8亿）均首次实现单季度盈利，理想则已连续三年年度盈利（2025年净利润11亿元）。三家同时在同一报告期扭亏为盈，在中国新势力历史上首次出现。但分化已相当明显——小鹏靠量价双升增长126%，蔚来靠旗舰拉高单车价值，理想正经历换代阵痛（全年营收同比下滑22.3%，周订单腰斩）。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">小米新一代SU7：友商"半个车圈"到场，首周锁单破3万</div>
+              3月19日发布，售价21.99万–30.39万元，全系标配激光雷达，算力700TOPS。比亚迪王传福、理想李想、小鹏何小鹏等悉数到场助阵，极为罕见。上市34分钟锁单破15000辆，首周总锁单超30000辆，懂车帝实测续航678km登榜第一。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">华为鸿蒙智行：896线激光雷达量产上车，覆盖多价位段</div>
+              3月23日春季发布会，尚界Z7/Z7T、问界M6预订，享界S9T首发量产896线双光路图像级激光雷达（行业最高），问界M7/M8/M9同步升级。硬件层面已处行业领先，实际智驾提升效果待车主实测验证。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              享界S9T、享界S9首发量产<strong>896线双光路图像级激光雷达</strong>（比主流128线提升6-7倍点云密度），配合华为ADS 4乾崑智驾。问界M7/M8/M9等在售车型同步升级，打出覆盖多价位段的硬件牌。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              财报沟通中明确<strong>二季度将迎来自动驾驶能力重大突破</strong>。第二代VLA物理AI智驾（搭载于2026款G6/P7+/G7/G9等）为当前核心智驾技术。B站有视频记录澳洲车商评测小鹏全新X9增程版智驾，称"智驾绝了"。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              全新ES8在中保研2026年"史上最严"测评中获<strong>五项全优</strong>（G+最高评级）。ES9技术发布会定于<strong>4月9日</strong>，将展示"SkyRide·天行"底盘系统。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              新一代SU7全系标配激光雷达，算力700TOPS，搭载Xiaomi HAD端到端辅助驾驶系统，为2026款最大亮点。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              <span class="no-content">本周无新ADAS动态，主要精力集中在换代L系列上市前的清库存阶段。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              在GTC 2026上分享第二代VLA物理世界大模型进展，何小鹏强调"物理AI应用历史性转折点"，2026年目标推进L4 Robotaxi商业化。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              NOMI座舱AI升级为<strong>"深度思考模式"</strong>（Cedar 1.4.0 OTA已推送），回答更具逻辑性；端侧大模型守卫模式已上车。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              自研M100芯片处于大规模系统测试阶段，预计2026年下半年商业化。本周无新AI功能公告。
+            </div>
+            <div class="tech-block" data-brand="xiaomi huawei">
+              <span class="tech-brand-name xiaomi">小米</span><span class="tech-brand-name huawei">华为</span>
+              <span class="no-content">本周暂无专项AI能力发布。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              近期已推送NT3.0平台（ET9/全新ES8）<strong>Cedar雪松1.4.0 OTA</strong>，超80项新增功能：城区效率换道、遥控泊车、端侧大模型守卫模式、AR HUD转向盲点等。NT2.5平台同期推送Cedar S 1.4.0。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              公布2026年OTA计划：<strong>全年每季度至少一次大版本OTA推送</strong>，二季度将迎来自动驾驶能力重大突破。2月4日已推送天玑AIOS 6.0（行业首个主动服务座舱，新增灵境桌面等）。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为（智界）</span>
+              1月30日推送"OTA开门红"版本，新增刘亦菲专属泊车语音包等30余项功能。3月发布会后多款新车OTA计划预计跟进。
+            </div>
+            <div class="tech-block" data-brand="li xiaomi">
+              <span class="tech-brand-name li">理想</span><span class="tech-brand-name xiaomi">小米</span>
+              <span class="no-content">本周暂无OTA推送公告。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              新一代SU7车机<span class="img-hint">HyperOS界面<span class="img-tip"><img src="images/xiaomi_hyperos.jpg" data-src="https://car3.autoimg.cn/cardfs/product/g33/M09/1D/9D/750x0_autohomecar__ChxpVWm79I2ADbVXACOUsS1cE4s128.jpg" alt="小米SU7 HyperOS车机界面" loading="lazy"><div class="img-cap">小米SU7 HyperOS 车机界面<br>来源：汽车之家评测</div></span></span>本周引发用户大量讨论，小红书和B站多条实拍内容显示，新款车机交互视觉质感升级明显。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              Cedar 1.4.0 升级<span class="img-hint tip-left">AR HUD界面<span class="img-tip"><img src="https://www2.autoimg.cn/chejiahaodfs/g34/M06/60/EF/620x0_1_autohomecar__ChxpWGmEXDuAMhJEAARS2kIqhbA102.jpg" alt="蔚来 Cedar 1.4.0 AR HUD" loading="lazy"><div class="img-cap">蔚来 Cedar 1.4.0 HUD功能更新<br>来源：汽车之家</div></span></span>（支持布局调整，实现与仪表主题联动），以及分区独享音场、氛围灯影院随动等体验升级。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              享界S9T焕新上市，新增<span class="img-hint tip-right">星玫粉车色及星云红内饰<span class="img-tip"><img src="https://www2.autoimg.cn/chejiahaodfs/g34/M05/04/F5/620x0_1_autohomecar__ChxpWGm4wryAQgmiAAC1Cb182vA633.jpg" alt="享界S9T 星玫粉配色" loading="lazy"><div class="img-cap">享界S9T 星玫粉配色上市<br>来源：汽车之家</div></span></span>设计，车机鸿蒙座舱本周无专项HMI发布。
+            </div>
+            <div class="tech-block" data-brand="li xpeng">
+              <span class="tech-brand-name li">理想</span><span class="tech-brand-name xpeng">小鹏</span>
+              <span class="no-content">本周暂无HMI/车机系统专项更新。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">🚗 蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">《刚出ICU的蔚来，又被比亚迪砍了一刀》讨论蔚来Q4盈利及市场竞争；<a href="https://www.bilibili.com/video/BV1f7XsBaEPi/" target="_blank">链接 ↗</a>；懂车帝抖音账号有蔚来ES6智驾表现测试视频（6天前）</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《蔚来全新ES8获中保研新规测评五项全优》（2026-03-26）；<a href="https://news.qq.com/rain/a/20260326A060AT00" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">《蔚来新款ES6价格配置全面讲解》（4天前）；蔚来ES9无伪装路测信息；技术发布会定4月9日</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content"><span class="no-content">本周无明确小红书内容被索引到，但各平台有用户自发分享ES8中保研五项全优短视频</span></div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">🚗 小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">官方直播（3月19日）新一代SU7发布会；《小米26年能完成55万辆销量目标吗？》；<a href="https://www.bilibili.com/video/BV1QNQSB9Eiv/" target="_blank">链接 ↗</a>；大量用户自发实拍内容涌现</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《小米SU7 2026款评测：全系激光雷达，涨价1.4万值吗？》全维度解析；<a href="https://chejiahao.autohome.com.cn/info/25038414" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">懂车帝实测SU7 Pro续航678km登榜第一；<a href="https://smartcar.cnmo.com/news/806254.html" target="_blank">链接 ↗</a>；《雷军请动半个车圈老总站台》</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">大量用户提车、试驾笔记；颜色选择（卡布里蓝、赤霞红热度最高）；是本周小红书汽车类话题热度第一梯队</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">🚗 理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">理想官方B站本周暂无新发布视频；第三方UP主有2025财报分析内容</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《3月车市冰火两重天，理想销量惨遭腰斩》周订单骤降至不足5000辆；<a href="https://baijiahao.baidu.com/s?id=1860614998818427898" target="_blank">链接 ↗</a>；《理想L9停售，李想背水一战？》；<a href="https://news.qq.com/rain/a/20260323A06KI900" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content"><span class="no-content">本周暂无懂车帝独家文章，多家媒体引用理想3月销量下滑数据</span></div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content"><span class="no-content">本周暂无理想相关热门帖子被检索到</span></div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">🚗 小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">《2026款小鹏MONA M03 大大大大大升级》；<a href="https://www.bilibili.com/video/BV1cEQCBDELx/" target="_blank">链接 ↗</a>；《从夯到拉！老车主点评26款MONA升级点》；<a href="https://www.bilibili.com/video/BV1MjQSBjEwd/" target="_blank">链接 ↗</a>；澳洲车商测小鹏X9增程版智驾；<a href="https://www.bilibili.com/video/BV1W6Q2BAEg7/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《小鹏2025年总收入767.2亿元，Q4首次盈利3.8亿》；<a href="https://chejiahao.autohome.com.cn/info/25055568" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">《2026款小鹏全系实测！四大车型齐发》；<a href="https://www-lq.dongchedi.com/article/7612581964343919128" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">用户分享2026款新车智驾实际体验，关注XNGP功能表现</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">🚗 华为汽车（问界/智界/享界/尚界）</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">《华为五子登科新传——五界破局智能汽车（上）》；<a href="https://www.bilibili.com/video/BV1TVQSBEESm/" target="_blank">链接 ↗</a>；智界B站直播间有"鸿蒙智行新年OTA升级"直播</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《鸿蒙智行8车齐发，尚界Z7硬刚小米，问界M6预售22.98万》；<a href="https://news.qq.com/rain/a/20260323A069EQ00" target="_blank">链接 ↗</a>；《2026新款问界M7选购攻略》；<a href="https://chejiahao.autohome.com.cn/info/25063898" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">《2026款问界M7：华为"全家桶"加持，30万级家用SUV明智之选》；<a href="https://www.dongchedi.com/article/7599837111088792089" target="_blank">链接 ↗</a>；问界M6深度评测</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">大量问界M6实车外观讨论（"是否像卡宴"成热议）；享界S9T新配色（星玫粉）内饰分享</div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 热点分析 -->
+        <div class="section" data-topic="analysis">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-analysis">🔍</div>
+            <div class="section-title">本周热点内容分析</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="analysis-block">
+              <div class="analysis-h">财报季：新势力集体盈利，但分化格局已定</div>
+              "蔚小理"2025Q4财报集中披露。蔚来（Q4经营利润12.5亿）、小鹏（Q4净利润3.8亿）均首次盈利，理想三年连续盈利。但三家"同期盈利"背后故事截然不同：小鹏靠量价双升（全年交付42.94万辆+126%）重建财务健康；蔚来靠旗舰车型拉高单车价值；理想正在经历换代阵痛（全年营收同比-22.3%），等待新款L系列（预计Q2上市）重建增长。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">小米新SU7首周：行业最高热度，友商集体站台前所未有</div>
+              3月19日发布会雷军"请来半个车圈老总"（王传福、李想、何小鹏等）到场助阵，在汽车行业极为罕见本身就成为话题。全系激光雷达、涨价1.4万、首周锁单3万辆、懂车帝实测续航678km第一，都是助推内容量的核心素材。B站、小红书用户自发内容量激增，是本周各平台汽车话题讨论度第一。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">华为发布会：896线激光雷达打开想象空间，效果待验证</div>
+              3月23日华为发布会最值得关注的是<strong>896线双光路激光雷达量产上车</strong>（比主流128-256线提升3-7倍点云密度）。华为在享界S9T首发量产后同步升级给在售问界M7/M8/M9，打出覆盖多价位段的硬件牌。但实际智驾提升效果需等待车主实测验证，不宜直接得出"华为智驾跃升"的结论。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">理想换代前的静默期：L9停售、周订单骤降，是危机也是信号</div>
+              官网L9完全停售，L7/L8仅剩少量库存，3月周订单从1.2万辆跌至不足5000辆。既是换代前的库存清理（新款L系列预计Q2上市），也揭示现款L系列在竞争加剧下的真实压力。问界M7、蔚来新ES8正在正面竞争理想的核心用户群。新款L系列能否重建爆款，是决定理想2026年走向的最关键变量。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r2 -->
+
+
+    <!-- ===== REPORT 1: 3/20–3/26 ===== -->
+    <div class="report-card"
+         id="r1"
+         data-date="20260320-20260326"
+         data-brands="nio xiaomi li xpeng huawei">
+
+      <div class="report-header">
+        <div class="report-date">2026年3月20日 – 3月26日</div>
+        <div class="report-title">新能源汽车行业周报</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+        </div>
+      </div>
+
+      <!-- No summary in old format, add note -->
+      <div class="summary-box" style="background: linear-gradient(135deg,#f0fdf4 0%,#ecfdf5 100%); border-color: #a7f3d0; color: #065f46;">
+        <div class="summary-box-label" style="color:var(--green)">本周一句话总结</div>
+        本周是2026年新能源发布密度最高的一周之一：华为鸿蒙智行10款新车同台、小米新SU7上市引爆流量、理想发布MindVLA-o1、小鹏P7二代VLA上线，激光雷达全系普及化与VLA大模型军备竞赛同时启动。<strong>内容密度极高，强烈建议详读综合洞察和ADAS章节。</strong>
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">激光雷达"全系普及化"成为本周最显著趋势</div>
+              小米新一代SU7全系标配激光雷达、华为全系改款车型搭载896线激光雷达，标志着激光雷达从旗舰专属配置迈向主流标配。将倒逼纯视觉方案厂商在中国市场面临更大压力，全面提升新能源汽车ADAS/NOA体验下限。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">VLA大模型成为各品牌智驾"军备竞赛"核心赛场</div>
+              理想（MindVLA-o1）、小鹏（第二代VLA）在同一周内相继发布VLA相关成果，加上华为乾崑ADS 4.1，各大品牌均将"视觉-语言-动作统一模型"作为下一代智驾核心方向。VLA的量产落地速度与推理效率，正成为2026年智驾军备竞赛的新分水岭。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">鸿蒙智行"车海战术"将加剧20-40万市场竞争烈度</div>
+              3月23日10款新车覆盖20万级（尚界Z7）至40万级（问界M8/享界S9T）全价格带，均绑定896线激光雷达ADS 4.1。问界M6预售24小时订单突破6万台，已验证市场对鸿蒙智行"高性价比智驾"路线的认可。这将对理想、蔚来、小米的同价位产品构成直接压力。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              3月4日发布<strong>896线双光路图像级激光雷达</strong>，3月23日春季发布会普及至全系改款车型，配套升级至<strong>ADS 4.1</strong>，主动避免可能碰撞超370万次（截至3月22日）。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              新一代SU7全系标配激光雷达（旧款仅Max版配备），搭载Xiaomi HAD端到端辅助驾驶系统，城市NOA开通范围持续扩大。全系激光雷达标配被行业解读为"智驾硬件民主化重要信号"。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              3月17日于NVIDIA GTC 2026正式发布<strong>MindVLA-o1</strong>——下一代自动驾驶基础模型，实现3D感知、推理思考与驾驶行为的统一架构，支持闭环强化学习。将通过未来OTA迭代下放至量产车型。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              3月18日发布P7<strong>第二代VLA</strong>（视觉-语言-动作模型），并官宣向存量P7车主全量OTA推送，城市复杂路段判断能力大幅提升。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              ES9定位50-60万元旗舰SUV，全系搭载"天行智能底盘"（线控转向+全主动悬架+后轮转向）。ADAS硬件规格将于<strong>4月9日技术发布会</strong>详细披露。
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              战略层面最为激进：宣布将年度研发预算的一半投入AI，MindVLA-o1模型实现"视觉-语言-行动"统一范式；全新L9定位为具身智能机器人"开山之作"，搭载星环OS（开源）、基座大模型、端到端AD。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              第二代VLA代表小鹏智驾从规则驱动向数据驱动的范式切换，承诺向存量车主OTA推送。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              ADS 4.1结合896线激光雷达，感知能力达"图像级"精度，将传统点云升级为3D成像，AI推理精度大幅提升。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              新一代SU7搭载HyperOS智能座舱，与手机、平板、家居生态深度融合，AI助手能力持续迭代。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              <span class="no-content">本周暂无AI能力专项发布，ES9技术发布会（4月9日）预计将披露AI相关内容。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              OTA 8.0于2025年9月推送，带来全球首个量产VLA司机大模型（AD Max全量推送），54项新增功能。MindVLA-o1发布预示下一代智驾能力将通过未来OTA版本升级。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              第二代VLA随P7 2026款发布，并官宣向存量P7车主全量OTA推送，时间表待公布。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              六款改款车型升级至ADS 4.1，需到店换装896线激光雷达模块（非纯OTA推送）。
+            </div>
+            <div class="tech-block" data-brand="nio xiaomi">
+              <span class="tech-brand-name nio">蔚来</span><span class="tech-brand-name xiaomi">小米</span>
+              <span class="no-content">本周暂无针对存量车主的重大OTA推送公告。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为</span>
+              问界M6搭载<span class="img-hint">"向日葵屏"<span class="img-tip"><img src="https://www2.autoimg.cn/chejiahaodfs/g33/M0B/4C/57/620x0_1_autohomecar__Chto52nBBdGAFqlOACKUNbEozCU726.jpg" alt="问界M6 向日葵屏" loading="lazy"><div class="img-cap">问界M6 向日葵屏 / 灵感橱窗<br>来源：汽车之家评测</div></span></span>+"灵感橱窗"创新交互设计，向日葵屏可随阳光角度自动旋转调节；尚界Z7/Z7T以"都会美学"为设计语言，<span class="img-hint tip-right">钻石晶簇尾灯<span class="img-tip"><img src="https://www2.autoimg.cn/chejiahaodfs/g34/M05/04/F5/620x0_1_autohomecar__ChxpWGm4wryAQgmiAAC1Cb182vA633.jpg" alt="尚界Z7 钻石晶簇尾灯" loading="lazy"><div class="img-cap">尚界系列 大灯 / 尾灯设计<br>来源：汽车之家</div></span></span>、都市流光大灯彰显高端感。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              新一代SU7车机HyperOS深化"人车家"生态互联，界面UI沿用米家设计语言，对米粉群体极为友好。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              2026款MONA M03内饰采用更年轻化设计语言，新增<span class="img-hint">"罗兰紫""牛油果绿"<span class="img-tip"><img src="https://img.ithome.com/newsuploadfiles/2026/3/9b0c82a3-4de0-48fa-b9b8-5bd6abb50aa7.jpg" alt="小鹏MONA M03 罗兰紫/牛油果绿" loading="lazy"><div class="img-cap">小鹏MONA M03 2026款配色<br>来源：IT之家</div></span></span>配色；P7配合第二代VLA推出智驾交互界面优化，驾驶反馈可视化程度提升。
+            </div>
+            <div class="tech-block" data-brand="nio li">
+              <span class="tech-brand-name nio">蔚来</span><span class="tech-brand-name li">理想</span>
+              <span class="no-content">本周暂无HMI/车机系统专项更新发布。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">🚗 蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">蔚来ES9发布会预热视频多位UP主发布；《2026年9系扎堆，小米还能一鸣惊人吗？》横向对比；<a href="https://www.bilibili.com/video/BV1owcRzYEYY/" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《一文解读蔚来ES9细节亮点，50万级"真豪华"技术旗舰？》（2026-03-26）；<a href="https://news.qq.com/rain/a/20260326A07DYW00" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">《全新蔚来ES9双拼色特别版开启无伪装路测，技术发布会定4月9日》（2026-03-26）；<a href="https://ai5g.china.com/auto/13004829/20260326/49356323.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">ES9路测曝光后引发新一轮热议；蔚来Q4盈利消息、湖北8周年用户年会带动品牌话题热度上升</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">🚗 小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">官方直播间3月19日发布会直播；多UP主发布深度解析、交付体验视频（搜索"小米SU7 2026"可见99+视频）；<a href="https://live.bilibili.com/31092096" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《小米SU7 2026款评测：全系激光雷达，涨价1.4万值吗？》；<a href="https://chejiahao.autohome.com.cn/info/25038414" target="_blank">链接 ↗</a>；《最长续航892km！辅助驾驶硬件相同却表现不同？》；<a href="https://www.autohome.com.cn/drive/202603/1313049.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">多篇报道新一代SU7上市，梳理21.99万元起定价、全系激光雷达、蛟龙底盘首发等核心升级</div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">大量用户试驾打卡、外观内饰分享、与旧款对比帖；苏炳添代言营销话题热度居高不下</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">🚗 理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">多位UP主解读《GTC这一枪，理想打的不只是智驾升级》（3月17日GTC发布）及理想2025年财报（营收1123亿，净利11亿）分析视频</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《GTC这一枪，理想打的不只是智驾升级》（2026-03-25）；<a href="https://www.bitauto.com/article/1003108563268/" target="_blank">链接 ↗</a>；《理想汽车发布下一代自动驾驶基础模型MindVLA-o1》（CCTV）；<a href="https://auto.cctv.com/2026/03/18/ARTImEaLg0G2OMk9ZybCcEnx260318.shtml" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">《千亿现金、百亿研发，理想汽车全面转舵具身智能》；<a href="https://www.sohu.com/a/997540785_120988576" target="_blank">链接 ↗</a>；《全新L9是开山之作》；<a href="https://k.sina.cn/article_7857201856_1d45362c0019037tli.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">MindVLA-o1技术发布引发讨论；用户热议理想"战略转向AI机器人"的得失</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">🚗 小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">《2026款小鹏MONA M03 大大大大大升级》热门视频；<a href="https://www.bilibili.com/video/BV1cEQCBDELx/" target="_blank">链接 ↗</a>；多位UP主发布P7第二代VLA发布会解析视频</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《小鹏P7发布：搭载第二代VLA，售价20.38万元起》；<a href="https://chejiahao.autohome.com.cn/info/25020202" target="_blank">链接 ↗</a>；《2026款小鹏MONA M03官图发布 续航最高640km》；<a href="https://chejiahao.autohome.com.cn/info/25062783" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">《全新小鹏P7新版型上市 20.38万元起售》；<a href="https://news.yiche.com/hao/wenzhang/108541257/" target="_blank">链接 ↗</a>；《2026款小鹏MONA M03升级细节》；<a href="https://www.163.com/dy/article/KORV3R49051191D6.html" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">2026款MONA M03新配色"罗兰紫""牛油果绿"引发潮流打卡热潮，年轻女性用户群高度关注</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">🚗 华为汽车（问界/智界/享界/尚界）</div>
+              <div class="platform-row"><span class="platform-badge">B站</span><div class="platform-content">《华为五子登科新传——五界破局智能汽车（上）》深度科普系列；<a href="https://www.bilibili.com/video/BV1TVQSBEESm/" target="_blank">链接 ↗</a>；多位UP主发布春季发布会解析，"10款新车一口气发布"等话题大量播放</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家</span><div class="platform-content">《"四界"九车扎堆上新！鸿蒙智行发起"车海战术"》；<a href="https://www.nbd.com.cn/articles/2026-03-23/4304112.html" target="_blank">链接 ↗</a>；《10车齐发，个个都这么能打！》；<a href="https://news.qq.com/rain/a/20260325A06V5I00" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">懂车帝</span><div class="platform-content">《鸿蒙智行一口气发了十款车！全系换上896线激光雷达》；<a href="https://auto.ifeng.com/c/8rjTZyDV70h" target="_blank">链接 ↗</a>；《问界M6 24小时订单破6万！华为ADS4.0封神》；<a href="https://www.sohu.com/a/1000939854_100085330" target="_blank">链接 ↗</a></div></div>
+              <div class="platform-row"><span class="platform-badge">小红书</span><div class="platform-content">春季发布会当天话题热度爆炸，问界M6、尚界Z7/Z7T新车颜值讨论大量涌现；ADS 4.1激光雷达下放被大量用户解读为"智驾卷王"新姿态</div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 热点分析 -->
+        <div class="section" data-topic="analysis">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-analysis">🔍</div>
+            <div class="section-title">本周热点内容分析</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="analysis-block">
+              <div class="analysis-h">小米汽车：第一流量焦点，全系激光雷达定义新标准</div>
+              3月19日新一代SU7正式上市（21.99万元起），全系标配激光雷达、首发"蛟龙底盘"、续航最高892km。发布后72小时内门店客流与锁单速度均超越初代，营销端借助苏炳添等代言形成出圈效应。从"极致性价比"转向"全面均衡"的定位升级，是本周行业的最大讨论焦点。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">华为鸿蒙智行：车海战术覆盖全价格带，问界M6预售6万订单</div>
+              3月23日长沙春季发布会10款新车同台。余承东因身体原因缺席，由华为终端BG CEO何刚代主持。问界M6、尚界Z7/Z7T开启预订，六款改款车型集中上市，全系普及896线激光雷达+ADS 4.1。问界M6预售24小时订单破6万，成为中大型SUV新纪录。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">理想汽车：向"汽车AI公司"深度转型</div>
+              3月17日GTC 2026发布MindVLA-o1，3月12日2025全年财报（营收1123亿，净利11亿）宣布将一半研发预算投入AI。全新L9定位为具身智能机器人"开山之作"，2026年内发布。理想的战略转型激进程度在国内整车厂中首屈一指。
+            </div>
+            <div class="analysis-block">
+              <div class="analysis-h">小鹏：智驾+颜值双线发力</div>
+              3月18日发布P7第二代VLA版本（20.38万元起），同期2026款MONA M03罗兰紫/牛油果绿配色官图发布，全国展车3月25日到店。智驾技术（第二代VLA）与外观颜值（潮流配色）两条线同步发力，兼顾智驾核心用户与年轻潮流用户群。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r1 -->
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-state-icon">🔍</div>
+      <div class="empty-state-text">当前筛选条件下暂无内容，请调整筛选项</div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+// ── State ──
+const state = { date: 'all', brand: 'all', topic: 'all' };
+
+// ── Toggle section collapse ──
+function toggleSection(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+}
+
+
+
+// ── Chip filter ──
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const filterType = chip.dataset.filter;
+    const value = chip.dataset.value;
+
+    // Update state
+    state[filterType] = value;
+
+    // Update chip active states for this filter group
+    document.querySelectorAll(`.chip[data-filter="${filterType}"]`).forEach(c => {
+      c.classList.toggle('active', c.dataset.value === value);
+    });
+
+    applyFilters();
+
+    // Update weekly highlight banner when date filter changes
+    if (filterType === 'date') {
+      updateHighlightBanner(value);
+    }
+  });
+});
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.report-card');
+  let visibleCards = 0;
+
+  // Handle standalone vehicle panel
+  const vehiclePanel = document.getElementById('vehiclePanel');
+  if (vehiclePanel) {
+    if (state.topic === 'vehicles') {
+      vehiclePanel.classList.add('active');
+      cards.forEach(card => card.classList.add('hidden'));
+      // Brand filter on vehicle rows
+      vehiclePanel.querySelectorAll('table.vehicle-table tbody tr').forEach(row => {
+        if (state.brand === 'all') {
+          row.style.display = '';
+          row.style.opacity = '1';
+        } else {
+          row.style.opacity = row.dataset.brand === state.brand ? '1' : '0.3';
+          row.style.display = '';
+        }
+      });
+      visibleCards = 1;
+    } else {
+      vehiclePanel.classList.remove('active');
+    }
+  }
+
+  if (state.topic !== 'vehicles') {
+    cards.forEach(card => {
+      const cardDate = card.dataset.date;
+      const dateOk = state.date === 'all' || cardDate === state.date;
+
+      if (!dateOk) {
+        card.classList.add('hidden');
+        return;
+      }
+
+      const brandOk = filterBrandInCard(card, state.brand);
+      const topicOk = filterTopicInCard(card, state.topic);
+
+      const shouldShow = dateOk && brandOk && topicOk;
+      card.classList.toggle('hidden', !shouldShow);
+      if (shouldShow) visibleCards++;
+    });
+  }
+
+  // Show empty state
+  document.getElementById('emptyState').classList.toggle('show', visibleCards === 0);
+}
+
+function filterBrandInCard(card, brand) {
+  // For brand filter, we don't hide the whole card, just highlight content.
+  // Instead, in overview sections, highlight matching brand-overview divs.
+  // For topic sections with tech-block, we handle this by checking data-brand attrs.
+  // Keep card visible regardless; just ensure sections with brand content are visible.
+  // Return true always (brand filtering is inline within sections)
+  
+  // Apply brand dim to tech-blocks and brand-overview items
+  card.querySelectorAll('.tech-block').forEach(block => {
+    if (brand === 'all') {
+      block.style.opacity = '1';
+    } else {
+      const blockBrands = (block.dataset.brand || '').split(' ');
+      block.style.opacity = blockBrands.includes(brand) ? '1' : '0.3';
+    }
+  });
+
+  card.querySelectorAll('.brand-overview').forEach(block => {
+    if (brand === 'all') {
+      block.style.display = '';
+    } else {
+      block.style.display = block.dataset.brand === brand ? '' : 'none';
+    }
+  });
+
+  return true; // always keep card visible for brand filter
+}
+
+function filterTopicInCard(card, topic) {
+  let hasVisible = false;
+  card.querySelectorAll('.section').forEach(section => {
+    const sectionTopic = section.dataset.topic;
+    const visible = topic === 'all' || sectionTopic === topic;
+    section.style.display = visible ? '' : 'none';
+    if (visible) hasVisible = true;
+  });
+
+  // Also show summary box always
+  const summaryBox = card.querySelector('.summary-box');
+  if (summaryBox) summaryBox.style.display = '';
+
+  return hasVisible;
+}
+
+// ── Weekly Highlight Banner: sync with date filter ──
+const highlightTexts = {
+  'all':                  '五期内容综览：VLA大模型军备竞赛启动，高端化与大众化两端同时加速，大众密集发布标志合资品牌进入智电反攻周期，北京车展即将引爆旗舰SUV正面决战。',
+  '20260414-20260420':   '北京车展前"前奏周"：理想L9全球首发（旗舰Livis版55.98万）、华为ADS 5.0技术大会定档4月23日、蔚来ES9预售发酵持续。小米周订单环比骤降26%而理想逆势+10%，舆论焦点已从"产品发布"切换为"车展前哨站"与"旗舰算力军备赛"。',
+  '20260407-20260413':   '蔚来以ES9技术发布会正式进军50万级超豪华市场，华为问界M6开启预订20天即破10万单，新能源高端化竞争全面提速，各家AI大模型与端到端技术迭代成为核心叙事。',
+  '20260331-20260406':   '本周行业关键词不是"全面爆发"，而是"主力车型改款落地 + OTA体验升级 + 内容热度明显分化"：蔚来用"5566"年度改款稳住基本盘，小米靠雷军拆车直播拿走全网流量，小鹏用MONA M03把图灵AI芯片压到更低价位，理想则用OTA 8.4证明自己仍在打磨体验，华为汽车本周新增内容相对少，但ADS 5.0的4月预热依然维持了技术存在感。',
+  '20260324-20260330':   '本周是内容相当密集的一周：小米新一代SU7上市首周完成首批交付并引发全网讨论；华为鸿蒙智行春季发布会8车齐发覆盖四大品牌；蔚来全新ES8获中保研"史上最严"新规五项全优；与此同时，"蔚小理"三家首次实现同期季度盈利，行业进入新阶段。',
+  '20260320-20260326':   '本周是2026年新能源发布密度最高的一周之一：华为鸿蒙智行10款新车同台、小米新SU7上市引爆流量、理想发布MindVLA-o1、小鹏P7二代VLA上线，激光雷达全系普及化与VLA大模型军备竞赛同时启动。'
+};
+
+function updateHighlightBanner(dateValue) {
+  const el = document.getElementById('weekly-highlight-text');
+  if (!el) return;
+  el.textContent = highlightTexts[dateValue] || highlightTexts['all'];
+}
+
+// Init banner on page load
+document.addEventListener('DOMContentLoaded', function() {
+  updateHighlightBanner(state.date);
+});
+
+document.querySelectorAll('.report-card').forEach(card => {});
+
+// ── Image Load Detection ──
+// Image load detection with fallback
+document.querySelectorAll('.img-hint').forEach(hint => {
+  const img = hint.querySelector('.img-tip img');
+  if (!img) return;
+  
+  // Add loading indicator
+  img.classList.add('loading');
+  
+  function onLoad() {
+    img.classList.remove('loading');
+    hint.classList.add('loaded');
+    hint.classList.remove('error');
+  }
+  
+  function onError() {
+    img.classList.remove('loading');
+    hint.classList.add('error');
+    hint.classList.remove('loaded');
+    
+    // Create error message
+    const errorMsg = document.createElement('div');
+    errorMsg.className = 'img-error';
+    errorMsg.textContent = '图片无法加载';
+    errorMsg.style.cssText = `
+      padding: 15px 10px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      background: var(--surface2);
+      border-radius: 4px;
+      margin-top: 8px;
+    `;
+    
+    // Replace image with error message
+    const tip = hint.querySelector('.img-tip');
+    if (tip) {
+      // Clear existing content and add error message
+      tip.innerHTML = '';
+      tip.appendChild(errorMsg);
+    }
+  }
+  
+  // Attach events
+  img.addEventListener('load', onLoad);
+  img.addEventListener('error', onError);
+  
+  // Add CORS attributes to help with cross-origin images
+  img.setAttribute('crossorigin', 'anonymous');
+  img.setAttribute('referrerpolicy', 'no-referrer');
+  
+  // Smart image loading: try local first, then remote fallback
+  function loadImage(imgSrc, fallbackSrc = null) {
+    const preloadImg = new Image();
+    let timeoutId;
+    
+    preloadImg.onload = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      img.src = imgSrc; // Set the actual image src once loaded
+      onLoad();
+    };
+    
+    preloadImg.onerror = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      if (fallbackSrc) {
+        console.log(`尝试备用图片: ${fallbackSrc}`);
+        loadImage(fallbackSrc);
+      } else {
+        onError();
+      }
+    };
+    
+    // Set timeout for image loading (3 seconds)
+    timeoutId = setTimeout(() => {
+      preloadImg.onload = null;
+      preloadImg.onerror = null;
+      if (fallbackSrc) {
+        loadImage(fallbackSrc);
+      } else {
+        onError();
+      }
+    }, 3000);
+    
+    // Start loading
+    preloadImg.src = imgSrc;
+  }
+  
+  // Check if we have both local and remote src
+  const imgSrc = img.getAttribute('src');
+  const dataSrc = img.getAttribute('data-src');
+  
+  if (dataSrc && imgSrc !== dataSrc) {
+    // We have a local src and remote fallback
+    loadImage(imgSrc, dataSrc);
+  } else {
+    // Only one src available
+    loadImage(imgSrc);
+  }
+});
+</script>
+</body>
+</html>
