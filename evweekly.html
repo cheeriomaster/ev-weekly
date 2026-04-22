@@ -138,41 +138,6 @@
   }
 
   /* ── Weekly Highlight Banner ── */
-  .weekly-highlight {
-    background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
-    border: 1px solid #bfdbfe;
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .weekly-highlight-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: #3b82f6;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    padding-top: 2px;
-  }
-  .weekly-highlight-label::before {
-    content: '';
-    display: inline-block;
-    width: 3px;
-    height: 12px;
-    background: #3b82f6;
-    border-radius: 2px;
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-  .weekly-highlight-text {
-    font-size: 14px;
-    line-height: 1.65;
-    color: #1e40af;
-    flex: 1;
-  }
-
   /* ── Content Area ── */
   .content { display: flex; flex-direction: column; gap: 20px; }
 
@@ -620,14 +585,6 @@
 
 <!-- Main Layout -->
 <div class="main">
-
-  <!-- Weekly Highlight Banner -->
-  <div class="weekly-highlight" id="weekly-highlight">
-    <div class="weekly-highlight-label">本周一句话总结</div>
-    <div class="weekly-highlight-text" id="weekly-highlight-text">
-      五期内容综览：VLA大模型军备竞赛启动，高端化与大众化两端同时加速，大众密集发布标志合资品牌进入智电反攻周期，北京车展即将引爆旗舰SUV正面决战。
-    </div>
-  </div>
 
   <!-- Content -->
   <div class="content" id="content">
@@ -2117,11 +2074,6 @@ document.querySelectorAll('.chip').forEach(chip => {
     });
 
     applyFilters();
-
-    // Update weekly highlight banner when date filter changes
-    if (filterType === 'date') {
-      updateHighlightBanner(value);
-    }
   });
 });
 
@@ -2219,26 +2171,6 @@ function filterTopicInCard(card, topic) {
 }
 
 // ── Weekly Highlight Banner: sync with date filter ──
-const highlightTexts = {
-  'all':                  '五期内容综览：VLA大模型军备竞赛启动，高端化与大众化两端同时加速，大众密集发布标志合资品牌进入智电反攻周期，北京车展即将引爆旗舰SUV正面决战。',
-  '20260414-20260420':   '北京车展前"前奏周"：理想L9全球首发（旗舰Livis版55.98万）、华为ADS 5.0技术大会定档4月23日、蔚来ES9预售发酵持续。小米周订单环比骤降26%而理想逆势+10%，舆论焦点已从"产品发布"切换为"车展前哨站"与"旗舰算力军备赛"。',
-  '20260407-20260413':   '蔚来以ES9技术发布会正式进军50万级超豪华市场，华为问界M6开启预订20天即破10万单，新能源高端化竞争全面提速，各家AI大模型与端到端技术迭代成为核心叙事。',
-  '20260331-20260406':   '本周行业关键词不是"全面爆发"，而是"主力车型改款落地 + OTA体验升级 + 内容热度明显分化"：蔚来用"5566"年度改款稳住基本盘，小米靠雷军拆车直播拿走全网流量，小鹏用MONA M03把图灵AI芯片压到更低价位，理想则用OTA 8.4证明自己仍在打磨体验，华为汽车本周新增内容相对少，但ADS 5.0的4月预热依然维持了技术存在感。',
-  '20260324-20260330':   '本周是内容相当密集的一周：小米新一代SU7上市首周完成首批交付并引发全网讨论；华为鸿蒙智行春季发布会8车齐发覆盖四大品牌；蔚来全新ES8获中保研"史上最严"新规五项全优；与此同时，"蔚小理"三家首次实现同期季度盈利，行业进入新阶段。',
-  '20260320-20260326':   '本周是2026年新能源发布密度最高的一周之一：华为鸿蒙智行10款新车同台、小米新SU7上市引爆流量、理想发布MindVLA-o1、小鹏P7二代VLA上线，激光雷达全系普及化与VLA大模型军备竞赛同时启动。'
-};
-
-function updateHighlightBanner(dateValue) {
-  const el = document.getElementById('weekly-highlight-text');
-  if (!el) return;
-  el.textContent = highlightTexts[dateValue] || highlightTexts['all'];
-}
-
-// Init banner on page load
-document.addEventListener('DOMContentLoaded', function() {
-  updateHighlightBanner(state.date);
-});
-
 document.querySelectorAll('.report-card').forEach(card => {});
 
 // ── Image Load Detection ──
