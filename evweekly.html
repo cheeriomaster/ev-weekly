@@ -119,6 +119,13 @@
   }
   .chip:hover { border-color: var(--accent); color: var(--accent); }
   .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip-feature {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .chip-feature:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
   .chip-dot {
     width: 7px; height: 7px;
     border-radius: 50%;
@@ -550,6 +557,9 @@
     <div class="filter-group">
       <span class="filter-label">日期</span>
       <span class="chip active" data-filter="date" data-value="all">全部</span>
+      <span class="chip chip-feature" onclick="location.href='autoshow2026.html'">🚗 北京车展专题</span>
+      <span class="chip" data-filter="date" data-value="20260504-20260510">5月4日–5月10日</span>
+      <span class="chip" data-filter="date" data-value="20260428-20260503">4月28日–5月3日</span>
       <span class="chip" data-filter="date" data-value="20260421-20260427">4月21日–4月27日</span>
       <span class="chip" data-filter="date" data-value="20260414-20260420">4月14日–4月20日</span>
       <span class="chip" data-filter="date" data-value="20260407-20260413">4月7日–4月13日</span>
@@ -704,23 +714,63 @@
               </tr>
               <tr data-brand="vw">
                 <td><strong style="color:var(--brand-vw)">大众</strong></td>
-                <td>3/30预售开启</td>
+                <td>4/25正式上市</td>
                 <td><span class="car-name">ID.ERA 9X</span></td>
-                <td><span class="car-price">32.98–37.98</span></td>
-                <td>合资品牌增程SUV需求者、传统燃油车换购中产</td>
-                <td>中大型增程SUV</td>
-                <td>大众首款增程SUV；Momenta R7端到端智驾模型；大容量增程电池；纯电续航200km+，综合续航1200km+</td>
-                <td><span class="car-tag hot">预售中</span></td>
+                <td><span class="car-price">30.98–35.98</span></td>
+                <td>高端家庭用户</td>
+                <td>全尺寸大型SUV（5207mm）</td>
+                <td>大众首款增程SUV；Momenta R7世界模型；九屏联动；六种空间模式</td>
+                <td><span class="car-tag hot">上市</span></td>
+              </tr>
+              <tr data-brand="li">
+                <td><strong style="color:var(--brand-li)">理想</strong></td>
+                <td>5/15上市</td>
+                <td><span class="car-name">L9 Livis</span></td>
+                <td><span class="car-price">55.98</span></td>
+                <td>多孩家庭</td>
+                <td>全尺寸SUV（5255mm）</td>
+                <td>具身智能旗舰；马赫100双芯片(2560TOPS)；800V全主动悬架</td>
+                <td><span class="car-tag hot">即将上市</span></td>
+              </tr>
+              <tr data-brand="xpeng">
+                <td><strong style="color:var(--brand-xpeng)">小鹏</strong></td>
+                <td>5月上市</td>
+                <td><span class="car-name">GX</span></td>
+                <td><span class="car-price">39.98（预售）</span></td>
+                <td>高端家庭用户</td>
+                <td>全尺寸大型SUV</td>
+                <td>线控底盘；后轮转向；第三排电动三折叠；航空级六重安全冗余</td>
+                <td><span class="car-tag new">预售中</span></td>
+              </tr>
+              <tr data-brand="huawei">
+                <td><strong style="color:var(--brand-huawei)">华为·启境</strong></td>
+                <td>6月上市</td>
+                <td><span class="car-name">GT7</span></td>
+                <td><span class="car-price">待公布</span></td>
+                <td>高端科技用户</td>
+                <td>中大型猎装车</td>
+                <td>ADS 5.0首发；赤兔平台；896线激光雷达；鸿蒙座舱6.0</td>
+                <td><span class="car-tag hot">即将上市</span></td>
+              </tr>
+              <tr data-brand="xiaomi">
+                <td><strong style="color:var(--brand-xiaomi)">小米</strong></td>
+                <td>5月底发布</td>
+                <td><span class="car-name">YU7 GT</span></td>
+                <td><span class="car-price">待公布</span></td>
+                <td>年轻科技用户</td>
+                <td>中型SUV</td>
+                <td>高性能GT版本；5月限时购车权益</td>
+                <td><span class="car-tag new">即将发布</span></td>
               </tr>
               <tr data-brand="vw">
                 <td><strong style="color:var(--brand-vw)">大众</strong></td>
-                <td>4/8发布，4/24车展首秀</td>
+                <td>4/24首发</td>
                 <td><span class="car-name">ID.AURA T6</span></td>
                 <td><span class="car-price">待定价</span></td>
                 <td>科技爱好者、智能驾驶早期采用者</td>
                 <td>中型纯电SUV</td>
-                <td>CEA电子电气架构；地平线征程6芯片+智驾方案；大众在华软件自研里程碑产品</td>
-                <td><span class="car-tag new">车展首秀</span></td>
+                <td>CEA电子电气架构；酷睿程智驾方案；激光雷达</td>
+                <td><span class="car-tag new">首发</span></td>
               </tr>
               <tr data-brand="vw">
                 <td><strong style="color:var(--brand-vw)">大众</strong></td>
@@ -729,7 +779,7 @@
                 <td><span class="car-price">待定价</span></td>
                 <td>海外市场用户（与国内暂无直接关联）</td>
                 <td>紧凑型两厢车</td>
-                <td>ID.3中期改款；海外市场专属；设计与技术升级；中国市场暂无引进计划</td>
+                <td>ID.3中期改款；海外市场专属；设计与技术升级</td>
                 <td><span class="car-tag new">全球首发</span></td>
               </tr>
               <tr data-brand="vw">
@@ -739,19 +789,545 @@
                 <td><span class="car-price">待定</span></td>
                 <td>关注大众与小鹏合作成果的科技购车群体</td>
                 <td>待公布</td>
-                <td>双方联合开发；基于小鹏EEA电子电气架构；搭载小鹏XNGP智驾方案；合作深度里程碑</td>
+                <td>双方联合开发；基于小鹏EEA电子电气架构；搭载小鹏XNGP智驾方案</td>
                 <td><span class="car-tag new">全球首秀</span></td>
               </tr>
             </tbody>
           </table>
 
           <div style="margin-top:14px;padding:12px 14px;background:#f9fafb;border-radius:8px;font-size:12.5px;color:var(--text-secondary);line-height:1.65;">
-            <strong style="color:var(--text-primary)">本周新车格局观察：</strong>高端市场被蔚来ES9（42万起）和问界M9改款牢牢占据，中间地带由问界M6（爆款预订数据）和小鹏MONA M03（智驾平权）分别从不同角度切入。本周最大看点是大众密集发布——与众08（4/16上市）、ID.ERA 9X（首款增程SUV预售中）、ID.AURA T6（4/24车展首秀）以及大众×小鹏联合新车型（4/21首秀），传统合资阵营正式从"追赶"转向"正面竞争"。北京车展（4/24）后预计将有更多新车型集中亮相。
+            <strong style="color:var(--text-primary)">本周新车格局观察：</strong>北京车展收官，多款重磅新车正式落地或确认上市时间。华为ADS 5.0技术的首发载体启境GT7（6月上市）将代表国产智驾最高水平；大众ID.ERA 9X已正式上市（30.98万起），标志着合资品牌增程反攻正式开始；理想L9 Livis（55.98万，5月15日上市）和小鹏GX（39.98万预售，5月上市）将在40–60万区间形成全尺寸SUV直接竞争；小米YU7 GT将于5月底发布，进一步搅动中型SUV市场。
           </div>
         </div>
       </div>
     </div>
 
+
+    <!-- ===== REPORT 8: 5/4–5/10 ===== -->
+    <div class="report-card"
+         id="r8"
+         data-date="20260504-20260510"
+         data-brands="nio xiaomi li xpeng huawei">
+
+      <div class="report-header">
+        <div class="report-date">2026年5月4日 – 5月10日</div>
+        <div class="report-title">新能源汽车行业周报 · 第8期</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box">
+        <div class="summary-box-label">本周一句话总结</div>
+        <strong>5月迎来"国产旗舰SUV发布周"</strong>——理想L9 Livis（5/15上市）、乐道L80（5/15上市）、蔚来ES9（5/11开启试驾/5/27上市）三款重磅大车密集排期，国产大五座/大六座旗舰SUV正式改写豪华SUV格局。<strong>小鹏VLA里程占比首破50%</strong>成行业里程碑，标志辅助驾驶从"尝鲜"步入"高频日常"。技术层面，5-6月OTA大版本潮来袭，蔚来NWM世界模型/小米XLA解封/理想MindVLA/华为ADS 5.0蓄势待发。
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">国产旗舰SUV改写豪华市场格局：五款9字辈/大五座车型5月密集上市</div>
+              蔚来ES9（预售价52.8万-65.8万/BaaS 42万起）、理想L9 Livis（55.98万）、乐道L80（整车24.58万起/BaaS 15.98万起）、小鹏GX（预售价39.98万）、智界V9（39.98万-52.98万）五款核心车型集中排期在5月上市，价格覆盖15万-65万区间，形成对BBA传统豪华SUV的全面竞争。蔚来采取"乐道L80（5/15）→ES9（5/27）"双车错峰策略，既避免内部资源争夺，又形成连续产品声浪。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">辅助驾驶"50%里程节点"首次达成，小鹏VLA 2.0改写行业参照系</div>
+              小鹏集团5月8日披露，第二代VLA推送一个月后，辅助驾驶里程占比正式突破50%，百公里接管次数环比下降25.87%，全程100%使用VLA的行程数环比增长27.84%——这是行业首个辅助驾驶里程过半的历史性节点。五一期间，VLA每日使用率高达93.21%，累计行驶8,446万公里，单车最长智驾里程5,441公里。这一数据意味着辅助驾驶正从"功能展示"转向"用户依赖"，将成为衡量各品牌智驾实力的新基准。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">5-6月智驾OTA大版本潮来袭：大模型全面上车</div>
+              蔚来NWM世界模型（5月底随ES9发布）、小米XLA第二大版本（5-6月）、小鹏VLA 2.0大版本（随GX交付）、理想OTA 8.5（MindVLA-o1首次上车）、华为乾崑ADS 5.0（6月底前）五路并发，形成年内最密集的智驾大版本更新潮。蔚来全系新老车主同步更新、小鹏三季度向老车型推送VLA蒸馏版，老车主权益正成为品牌忠诚度竞争的新战场。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来 — NWM世界模型（5月底随ES9发布）</span>
+              全新NWM（NiO World Model）世界模型即将发布：<strong>高速换电闭环</strong>（从驶入高速到进入换电站全程零接管，蔚来独家）；<strong>行车平顺性</strong>大模型重构加减速、跟车、变道决策逻辑，降低晕车概率；<strong>泊车自定义</strong>新增居中/贴边偏向选项；<strong>人机共驾</strong>优化接管提醒与人机权限切换逻辑。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏 — VLA 2.0持续优化</span>
+              第二代VLA推送满月里程占比破50%（行业首次）。随GX上市将推送VLA 2.0大版本，重点修复<strong>快速路跑不到限速、变道选道延迟、概率性跟慢车</strong>等高频痛点，从决策底层优化跟车/变道/限速适配逻辑，驾驶风格更接近"老司机"。三季度向双Orin-X平台老车主推送VLA蒸馏版。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想 — OTA 8.5内测</span>
+              OTA 8.5版本内测已开启，最快5月底全量推送。MindVLA-o1大模型有望首次上车，实现智驾从"规则驱动"到"大模型驱动"的跨越。同时新增<strong>遥控泊出</strong>功能、优化哨兵模式，解决窄车位停车难等家庭用车痛点。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为 — 乾崑ADS 5.0（6月底前推送）</span>
+              ADS 5.0已于4月23日发布，基于WEWA 2.0架构实现跳代升级。<strong>Multi-Agent博弈</strong>：云端引入群体博弈技术，路口博弈能力较上代提升10倍；<strong>CAS 5.0六维防碰撞</strong>：覆盖全时速、全方向、全目标、全天候、全时域、全场景；<strong>车位到车位3.0</strong>：新增主动绕行坑洼能力。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米 — XLA第二大版本（5-6月）</span>
+              上一版本仅释放了小部分能力，XLA第二版将<strong>全面释放大模型底层能力</strong>，重点优化城市道路博弈、无图场景适配、复杂路况决策，补齐上一版本能力短板，带来"远超预期"的体验升级。
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为 — 鸿蒙座舱HarmonySpace 6</span>
+              4月23日发布，<strong>AMS舱内AI多模态感知系统</strong>（行业首发）：可感知舱内用户心率、呼吸等体征数据；<strong>MoLA 2.0千亿参数大模型</strong>：System Agent升级为千亿级端到端大模型；<strong>新一代小艺智能体</strong>：全场景跨域交互，从"命令-执行"升级为"感知-理解-决策-执行"闭环，座舱从被动响应向主动感知转变。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏 — AI驱动销售转化</span>
+              自第二代VLA推送后，门店试驾满意度显著提升，消费者试驾后作出订购决定的平均用时按月缩短<strong>44.7%</strong>，显示智能驾驶正成为销售增长的核心驱动力，AI技术正在重塑购车决策链路。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想 — 具身智能旗舰</span>
+              L9 Livis定位"行业首款具身智能时代旗舰SUV"，结合具身智能时代科技，将智能座舱与底盘、动力系统深度整合，强调"家"的概念与具身智能的融合。
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio xpeng li xiaomi huawei">
+              <span class="tech-brand-name nio">蔚来</span><span class="tech-brand-name xpeng">小鹏</span><span class="tech-brand-name li">理想</span><span class="tech-brand-name xiaomi">小米</span><span class="tech-brand-name huawei">华为</span>
+              <strong>5月OTA大版本潮即将到来</strong>：蔚来ES9于5月11日开启全国试驾（OTA预计5月底随车上市推送NWM世界模型）；小鹏VLA 2.0随GX交付首发；理想OTA 8.5内测中；小米XLA第二大版本5-6月推送；华为ADS 5.0计划6月底前OTA全量推送。<span class="no-content">本周（5月4日-10日）各品牌尚未大规模推送，以下为已公布时间表。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想L9 Livis — 取消双联屏，拥抱一体式大屏</span>
+              5月6日官方完整曝光内饰：<strong>前排</strong>取消沿用已久的双联屏，取而代之一块一体式超大中控屏（与银河M9、领克900等产品设计语言趋同），极大提升视觉开阔感；<strong>后排</strong>娱乐吸顶屏重新设计，支持前后滑动调节，兼顾空间利用率与影音沉浸感；<strong>安全岛扶手</strong>融合机械门把手与电子按键；座椅采用菱形纹路工艺+Livis专属刺绣+天然原木饰条。整体采用<strong>星环环抱式座舱布局</strong>，"家的最高标准"设计理念。值得关注：理想从双联屏向一体式大屏的迭代，反映了HMI"减少屏幕边界感、追求沉浸式视觉体验"的主流趋势。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为HarmonySpace 6 — 座舱交互范式转变</span>
+              通过AMS多模态感知与MoLA 2.0智能体的组合，使座舱交互从"触控+语音"扩展到"环境感知+情绪理解"，是HMI设计从"界面交互"向"空间智能"演进的重要信号。九屏联动系统持续迭代，小艺智能体实现全场景跨域自然交互。
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>ES9 5月11日开启全国用户试驾</strong>（5月27日正式上市交付）；<strong>乐道L80 5月15日上市</strong>（预售价24.58万起/BaaS 15.98万起），定位"智能双舱大五座旗舰SUV"，车身5145mm，240L前备箱，最大储物2840L，900V三电，后驱零百5.9秒/四驱4.7秒。</div></div>
+              <div class="platform-row"><span class="platform-badge">交付数据</span><div class="platform-content">4月交付29,356台（同比+22.8%），其中蔚来19,024台、乐道5,352台、萤火虫4,980台。1-4月累计112,821台（+71%），历史累计迈入111万台里程碑。</div></div>
+              <div class="platform-row"><span class="platform-badge">哔哩哔哩</span><div class="platform-content">B站UP主"新势力-驾"于5月2日发布蔚来ES9试驾体验预告（播放量566）；《夏东评车》发布乐道L80四驱大五座SUV沉浸式试驾视频。</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家/懂车帝</span><div class="platform-content">ES9频道持续更新；乐道L80预售报道丰富；蔚来ES9 vs 乐道L80对比内容。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>4月交付超3万台</strong>（环比+50%），1-4月累计超10.9万辆（同比+11%）；<strong>YU7 GT 5月底发布</strong>在即，欧洲研发中心首次公开；SU7锁单超7万台；5月限时购车权益（5年低息首付4.99万起、月供低至3731元、至高63000元权益）。</div></div>
+              <div class="platform-row"><span class="platform-badge">汽车之家/懂车帝</span><div class="platform-content">4月交付量突破3万台数据广泛报道；YU7 GT相关内容持续传播。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>L9 Livis内饰5月6日完整曝光</strong>（一体式大屏、三联屏、吸顶屏支持前后滑动）；<strong>5月15日正式上市</strong>（售价55.98万元）；4月交付34,085台（同比+0.4%），1-4月累计12.9万辆（+1.9%）。</div></div>
+              <div class="platform-row"><span class="platform-badge">技术亮点</span><div class="platform-content">双马赫100芯片（2560TOPS）、4颗激光雷达、800V全主动悬架、全线控底盘、5C增程（420km纯电/1650km综合）、一体式大屏、星环环笼式座舱。</div></div>
+              <div class="platform-row"><span class="platform-badge">OTA</span><div class="platform-content">OTA 8.5内测中，MindVLA-o1有望首次上车；新增遥控泊出、优化哨兵模式。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>第二代VLA辅助驾驶里程占比突破50%</strong>（5月8日披露，行业首次），百公里接管次数环比-25.87%，全程100%使用VLA行程数环比+27.84%；五一期间VLA每日使用率93.21%，累计8,446万公里；<strong>GX 有望5月上市</strong>（预售价39.98万元）。</div></div>
+              <div class="platform-row"><span class="platform-badge">交付数据</span><div class="platform-content">4月交付31,011台（同比-11.51%，环比+13%）；欧洲P7+在麦格纳奥地利工厂本地化生产启动。</div></div>
+              <div class="platform-row"><span class="platform-badge">OTA</span><div class="platform-content">VLA 2.0随GX交付首发；高频痛点修复（快速路限速/变道延迟/跟慢车）；三季度向老车主推送VLA蒸馏版。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">华为汽车（问界/智界/尚界）</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>ADS 5.0/HarmonySpace 6技术影响力持续扩大</strong>；<strong>智界V9</strong>（5月上市，39.98万-52.98万，开售72小时小订超22,500台）；<strong>尚界Z7/Z7T</strong>上市后持续爬坡；问界M6上市后交付爬坡中。</div></div>
+              <div class="platform-row"><span class="platform-badge">技术路线</span><div class="platform-content">ADS 5.0（6月底前OTA）、HarmonySpace 6（MoLA 2.0+AMS多模态感知）、乾崑OS——三大技术底座成为鸿蒙智行全系车型的核心竞争力。</div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 热点分析 -->
+        <div class="section" data-topic="analysis">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-analysis">📊</div>
+            <div class="section-title">本周热点内容分析</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">5月"旗舰SUV发布周"：一场体系力的全面较量</div>
+              本周最核心的叙事是：5月15日（乐道L80 + 理想L9 Livis）和5月27日（蔚来ES9）将成为国产高端SUV的"发布决战日"，加上下旬的小鹏GX和小米YU7 GT，5款旗舰车型密集排期，国产大五座/大六座SUV全面围攻传统豪华品牌市场。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">技术竞争的本质正在转变</div>
+              辅助驾驶已从前沿功能变为核心卖点。小鹏VLA里程占比破50%这一里程碑意义在于——它证明了当技术成熟度足够时，用户会自然形成对辅助驾驶的依赖。这一转变将倒逼所有品牌加速从"功能普及"向"体验深耕"转移，竞争的焦点将从"能不能用"变为"好不好用、用户愿不愿意用"。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">HMI设计走向值得关注</div>
+              理想L9 Livis取消双联屏拥抱一体式大屏，华为HarmonySpace 6推动座舱从"界面交互"向"空间智能"演进，两个趋势方向不同但都在打破传统HMI的边界。小鹏VLA使用率93%背后，座舱内"不用手开车"的状态正在重新定义HMI——屏幕的功能价值可能正在被智驾能力重新分配。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">数据层面</div>
+              4月交付数据整体稳健（零跑71,387创历史新高、理想34,085、小米30,000+、小鹏31,011、蔚来29,356），但国内市场零售同比下降24%，行业分化加剧，高端旗舰SUV成为品牌利润与品牌势能的关键战场。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r8 -->
+
+
+    <!-- ===== REPORT 7: 4/28–5/3 ===== -->
+    <div class="report-card"
+         id="r7"
+         data-date="20260428-20260503"
+         data-brands="nio xiaomi li xpeng huawei vw">
+
+      <div class="report-header">
+        <div class="report-date">2026年4月28日 – 5月3日</div>
+        <div class="report-title">新能源汽车行业周报 · 第7期</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+          <span class="brand-tag vw">大众</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box">
+        <div class="summary-box-label">本周一句话总结</div>
+        <strong>北京车展收官周，华为 ADS 5.0 正式发布标志着高阶智驾进入"AI 老司机"时代</strong>，大众 ID.ERA 9X 上市宣告合资品牌增程反攻，多款旗舰新车将于5月密集上市交付，行业智能化竞争全面提速。
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">华为 ADS 5.0：从"规则优等生"进化为"直觉老司机"</div>
+              4月23日华为乾崑技术大会发布的 ADS 5.0 是本周最具分量的事件。不同于以往版本号更迭的增量升级，ADS 5.0 从底层架构全面重构——引入 WEWA 2.0（世界模型+多智能体博弈），配合"安全风险场理论"，让碰撞风险降低50%。这意味着智驾系统开始从"规则驱动"进化为"直觉驱动"，是质的飞跃。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">大众 ID.ERA 9X 上市：合资品牌增程反攻</div>
+              30.98万–35.98万元的定价、增程+四驱的组合、首搭 Momenta R7 强化学习世界模型——上汽大众用实际行动宣告，合资品牌正在以"更懂中国"的姿态加速电动智能化转型。上汽大众宣布2026年将推出13款、2029年将推出30余款新能源车型。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">5月成为新车密集交付月</div>
+              理想 L9 Livis（5月15日上市，55.98万元）、小鹏 GX（5月上市，预售价39.98万元）、小米 YU7 GT（5月底发布）、启境 GT7（6月上市）等多款重磅车型将在本月集中落地，北京车展（4月24日–5月3日）共吸引181台全球首发车，1451台展车，刷新全球车展规模纪录。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为（ADS 5 + WEWA 2.0）</span>
+              核心突破：<strong>WEWA 2.0 架构</strong>引入云端世界模型+多智能体博弈训练，复杂场景训练强度提升10倍；<strong>安全风险场理论</strong>实时建模周边人车路环境，碰撞风险降低<strong>50%</strong>；<strong>896线双光路图像级激光雷达</strong>可识别120米外小型障碍物；全维防碰撞系统 CAS 5.0 从五维升级为六维安全（新增"全时域安全"维度）。
+            </div>
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众（ID.ERA 9X）</span>
+              搭载 <strong>Momenta R7 强化学习世界模型</strong>，是全球首款在量产车上落地该技术的车型；配备192线激光雷达+全维感知矩阵。ID.AURA T6 搭载酷睿程（大众与地平线合资）智驾系统，配备激光雷达，标志大众在中国市场智驾合作进入新阶段。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来（天行智能底盘）</span>
+              ES9 搭载天行智能底盘，创新融合<strong>线控转向 + 主动悬架 + 后轮转向</strong>三大技术：过弯时车身更平稳，遇限高路段可自动降低底盘，沙漠路况支持主动弹跳。ET9 天行全主动悬架系统在车展现场吸引大量关注。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              GX 搭载航空级六重安全冗余、驾驶员失能辅助系统、原生线控底盘、线控转向、线控制动、后轮转向等旗舰技术，提供纯电和超级增程两种动力形式。第三排电动三折叠（6座版支持0°–180°电动调节）提升空间灵活性。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              L9 Livis 搭载双颗自研马赫100芯片（总算力2560 TOPS）、四激光雷达，全线控底盘已为L3预埋硬件，5月15日上市后具体智驾能力开放节奏待披露。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              YU7 GT 将于5月底最后一周正式发布，智驾规格未完整公开。新一代SU7交付持续进行中，4月交付突破30,000台，SU7累计锁单超60,000台。
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为（MoLA 2.0 + 盘古车载大模型）</span>
+              <strong>MoLA 2.0 架构</strong>实现跨域融合——将智驾感知、规划决策、座舱交互等多个AI模型统一调度；<strong>盘古车载大模型</strong>为底层支撑。新一代<strong>小艺智能体</strong>实现行业首个全场景聊天式自然交互，支持多人并行指令，告别"一问一答"机械模式。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏</span>
+              4月交付31,011台创年内新高，GX以"全尺寸旗舰SUV"为载体展示AI能力整合能力，Robotaxi 试运营倒计时进行中。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              L9 Livis 以"具身智能旗舰SUV"为品牌叙事核心，2560 TOPS算力平台将支持更复杂的端到端推理。
+            </div>
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              ID.ERA 9X 展示九屏联动座舱，与新势力在AI座舱领域正面竞争。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来</span>
+              NWM世界模型的闭环强化学习机制为技术亮点，4月交付29,356台（+22.8%），累计迈入111万台里程碑。
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为/鸿蒙智行</span>
+              ADS 5 计划于<strong>2026年内规模化 OTA</strong>至旗下80余款车型；<strong>乾崑 OS</strong>专用操作系统将车内信号传输时延降低30%，为后续高带宽智驾数据的实时处理奠定基础。
+            </div>
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众</span>
+              大众为 ID. 系列电动汽车推出<strong>3.0 软件版本 OTA 更新</strong>（公众号补充，公开转载）：高速场景新增自主变道能力，语音控制功能优化。<em>注：原文来自微信公众号转载，具体功能以官方为准。</em>
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              5月限时购车权益已公布，覆盖YU7与SU7 Ultra车型，提供5年低息方案和至高63,000元限时购车权益。
+            </div>
+            <div class="tech-block" data-brand="nio xpeng li">
+              <span class="tech-brand-name nio">蔚来</span><span class="tech-brand-name xpeng">小鹏</span><span class="tech-brand-name li">理想</span>
+              <span class="no-content">本周无大版本OTA推送公告，聚焦北京车展发布和5月新车上市节奏。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为（HarmonySpace 6）</span>
+              <strong>AMS 三合一舱内 AI 多模态感知系统</strong>（行业首发）：集成摄像头+红外摄像头+高精度星闪传感器，实现全方位精准动作感知和乘员监测。<strong>九屏联动</strong>系统：8.88英寸仪表魔术屏、6英寸二排门板魔术屏、15.6英寸2.5K中控双联屏、W-HUD、21.4英寸3K后排吸顶屏等。<strong>多人并行指令</strong>支持——前排驾驶员和后排乘客可同时发出独立指令并被同时响应。
+            </div>
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众（ID.ERA 9X）</span>
+              同样配备<strong>九屏联动</strong>系统，支持<strong>6种空间模式</strong>（满员出行/前排舒享/四座舒享/后排尊享/小憩/大床房），通过HMI系统一键切换车内座椅、屏幕、氛围灯、香氛等配置，实现空间定义的软件化。二排副驾侧动态零重力座椅标配。
+            </div>
+            <div class="tech-block" data-brand="xiaomi">
+              <span class="tech-brand-name xiaomi">小米</span>
+              新一代SU7 搭载<strong>零重力座椅</strong>，配合按摩功能，官方描述为"坐着比躺着还舒服"，体现"移动生活空间"座舱理念。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想</span>
+              L9 Livis 采用<strong>UWB近场感知技术</strong>替代传统超声波雷达（用于无缝进入），外观采用"大师级三重喷漆工艺"定制双色车身。
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">交付数据</span><div class="platform-content">4月交付29,356台（同比+22.8%），其中蔚来品牌19,024台、乐道5,352台、萤火虫4,980台。1-4月累计112,821台（+71.0%），历史累计迈入111万台里程碑。</div></div>
+              <div class="platform-row"><span class="platform-badge">核心事件</span><div class="platform-content">ES9 搭载天行智能底盘（北京车展亮相），融合线控转向+主动悬架+后轮转向三大技术；ET9 天行全主动悬架系统吸引大量关注；ES8历时215天完成第10万台交付，刷新中国40万+高端车型交付最快记录。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">交付数据</span><div class="platform-content">4月交付突破30,000台（再创单月新高），SU7累计锁单超60,000台，累计交付超26,000台。</div></div>
+              <div class="platform-row"><span class="platform-badge">核心事件</span><div class="platform-content"><strong>YU7 GT 将于5月底最后一周正式发布</strong>（北京车展雷军公布）；5月限时购车权益已公布（5年低息、月供低至3,731元起，至高63,000元限时权益）。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">交付数据</span><div class="platform-content">4月交付34,085台（同比+0.43%），历史累计1,669,442辆，覆盖160个城市511家零售店、223个城市550家服务网点。</div></div>
+              <div class="platform-row"><span class="platform-badge">核心事件</span><div class="platform-content"><strong>L9 Livis（55.98万元）将于5月15日上市</strong>，定位"具身智能旗舰SUV"，车身尺寸5255/2000/1810mm，轴距3125mm，标配防夹电动门。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">交付数据</span><div class="platform-content">4月交付31,011台（创年内新高）。</div></div>
+              <div class="platform-row"><span class="platform-badge">核心事件</span><div class="platform-content"><strong>GX 将于5月正式上市</strong>（预售39.98万元），品牌首款全尺寸旗舰SUV，提供纯电和超级增程两种动力，搭载线控底盘、后轮转向等旗舰技术。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">华为汽车（问界/智界/尚界等）</div>
+              <div class="platform-row"><span class="platform-badge">核心事件</span><div class="platform-content"><strong>4月23日乾崑技术大会</strong>：发布ADS 5（WEWA 2.0架构+安全风险场理论，碰撞风险降低50%）、HarmonySpace 6（小艺智能体+AMS三模态感知）、乾崑 OS（时延降低30%）、赤兔平台。2026年研发投入超180亿元，五年追加700亿–800亿元。<br>
+              <strong>启境 GT7</strong>将于6月上市，首发ADS 5.0+赤兔平台+896线激光雷达+鸿蒙座舱6.0。ADS 5.0合作车型目标2026年底达80款。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="vw">
+              <div class="brand-overview-name" style="color:var(--brand-vw)">大众汽车</div>
+              <div class="platform-row"><span class="platform-badge">核心事件</span><div class="platform-content"><strong>ID.ERA 9X 正式上市</strong>（4月25日，30.98万–35.98万元，限时权益价29.98万–34.98万元），大众品牌首款全尺寸增程式SUV，首搭Momenta R7强化学习世界模型，订单破万、超3000人锁单。<br>
+              <strong>ID.AURA T6</strong>北京车展全球首发，搭载全新CEA电子电气架构和酷睿程智驾系统（激光雷达）。上汽大众2026年将推13款、2029年推30余款新能源车型。</div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 新车型上市 r7 -->
+        <div class="section" data-topic="vehicles">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-vehicles">🚙</div>
+            <div class="section-title">新车型上市速览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <table class="vehicle-table">
+              <thead>
+                <tr>
+                  <th>品牌</th>
+                  <th>发布/上市时间</th>
+                  <th>车型</th>
+                  <th>价格（万元）</th>
+                  <th>定位人群</th>
+                  <th>尺寸级别</th>
+                  <th>核心特点</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-brand="vw">
+                  <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                  <td>2026.04.25上市</td>
+                  <td><span class="car-name">ID. ERA 9X</span></td>
+                  <td><span class="car-price">30.98–35.98</span></td>
+                  <td>高端家庭用户</td>
+                  <td>全尺寸大型SUV（5207mm）</td>
+                  <td>增程+四驱、Momenta R7世界模型、九屏联动、六种空间模式</td>
+                  <td><span class="car-tag hot">hot</span></td>
+                </tr>
+                <tr data-brand="li">
+                  <td><strong style="color:var(--brand-li)">理想</strong></td>
+                  <td>2026.05.15上市</td>
+                  <td><span class="car-name">L9 Livis</span></td>
+                  <td><span class="car-price">55.98</span></td>
+                  <td>多孩家庭</td>
+                  <td>全尺寸SUV（5255mm）</td>
+                  <td>具身智能旗舰、马赫100双芯片(2560TOPS)、800V全主动悬架</td>
+                  <td><span class="car-tag hot">hot</span></td>
+                </tr>
+                <tr data-brand="xpeng">
+                  <td><strong style="color:var(--brand-xpeng)">小鹏</strong></td>
+                  <td>2026.05上市</td>
+                  <td><span class="car-name">GX</span></td>
+                  <td><span class="car-price">39.98（预售）</span></td>
+                  <td>高端家庭用户</td>
+                  <td>全尺寸大型SUV</td>
+                  <td>线控底盘、后轮转向、第三排电动三折叠、航空级六重安全冗余</td>
+                  <td><span class="car-tag new">new</span></td>
+                </tr>
+                <tr data-brand="vw">
+                  <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                  <td>2026.04.24首发</td>
+                  <td><span class="car-name">ID. AURA T6</span></td>
+                  <td><span class="car-price">待公布</span></td>
+                  <td>年轻家庭</td>
+                  <td>中型SUV</td>
+                  <td>CEA电子电气架构、酷睿程智驾、激光雷达</td>
+                  <td><span class="car-tag new">new</span></td>
+                </tr>
+                <tr data-brand="huawei">
+                  <td><strong style="color:var(--brand-huawei)">华为·启境</strong></td>
+                  <td>2026.06上市</td>
+                  <td><span class="car-name">GT7</span></td>
+                  <td><span class="car-price">待公布</span></td>
+                  <td>高端科技用户</td>
+                  <td>中大型猎装车</td>
+                  <td>ADS 5.0首发、赤兔平台、896线激光雷达、鸿蒙座舱6.0</td>
+                  <td><span class="car-tag hot">hot</span></td>
+                </tr>
+                <tr data-brand="xiaomi">
+                  <td><strong style="color:var(--brand-xiaomi)">小米</strong></td>
+                  <td>2026.05底发布</td>
+                  <td><span class="car-name">YU7 GT</span></td>
+                  <td><span class="car-price">待公布</span></td>
+                  <td>年轻科技用户</td>
+                  <td>中型SUV</td>
+                  <td>高性能GT版本、5月限时购车权益</td>
+                  <td><span class="car-tag new">new</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="margin-top:14px;padding:12px 14px;background:#f9fafb;border-radius:8px;font-size:12.5px;color:var(--text-secondary);line-height:1.65;">
+              <strong style="color:var(--text-primary)">本周新车格局观察：</strong>北京车展收官，多款重磅新车正式落地或确认上市时间。华为ADS 5.0技术的首发载体启境GT7（6月上市）将代表国产智驾最高水平；大众ID.ERA 9X的上市标志着合资品牌增程反攻正式开始；理想L9 Livis和小鹏GX将在5月形成40–60万区间全尺寸SUV的直接竞争。
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r7 -->
 
         <!-- ===== REPORT 6: 4/21–4/27（北京车展特别版）===== -->
     <div class="report-card"

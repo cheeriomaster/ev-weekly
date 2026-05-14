@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026北京车展 · 非典型解读</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --surface: #ffffff;
+    --surface2: #f9fafb;
+    --border: #e5e7eb;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --accent: #7c3aed;
+    --accent-light: #f5f3ff;
+    --accent-border: #ddd6fe;
+    --accent2: #2563eb;
+    --accent2-light: #eff6ff;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --orange: #d97706;
+    --orange-light: #fffbeb;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+    --brand-nio: #00b3d7;
+    --brand-xiaomi: #ff6900;
+    --brand-li: #1db954;
+    --brand-xpeng: #1467f5;
+    --brand-huawei: #cf0a2c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4c1d95 70%, #6d28d9 100%);
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(99,102,241,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    color: #c4b5fd;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #a78bfa, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    max-width: 600px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Nav */
+  .nav-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-link {
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all .15s;
+    flex-shrink: 0;
+  }
+  .nav-link:hover { background: var(--surface2); color: var(--text-primary); }
+  .nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-back:hover { text-decoration: underline; }
+  .nav-divider { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+
+  /* Main */
+  .main { max-width: 900px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  /* Section */
+  .section {
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .section h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .section-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  .section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .section h3:first-of-type { margin-top: 0; }
+  .section p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .section p strong { color: var(--text-primary); }
+  .section ul {
+    padding-left: 18px;
+    margin-bottom: 12px;
+  }
+  .section li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 4px;
+  }
+  .section li strong { color: var(--text-primary); }
+
+  /* Blocks */
+  .insight-block {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+  .insight-block strong { color: var(--accent); }
+
+  .warn-block {
+    background: var(--red-light);
+    border-left: 3px solid var(--red);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  .quote-block {
+    background: var(--surface2);
+    border-left: 3px solid var(--border);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* Tables */
+  .section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 13px;
+  }
+  .section th {
+    background: var(--surface2);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  .section td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    vertical-align: top;
+  }
+  .section tr:last-child td { border-bottom: none; }
+  .section td:first-child { font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+
+  .tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .tag-purple { background: var(--accent-light); color: var(--accent); }
+  .tag-blue { background: var(--accent2-light); color: var(--accent2); }
+  .tag-green { background: var(--green-light); color: var(--green); }
+  .tag-orange { background: var(--orange-light); color: var(--orange); }
+  .tag-red { background: var(--red-light); color: var(--red); }
+
+  /* Brand indicators */
+  .brand-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+
+  /* Comparison cards */
+  .cmp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 12px 0 16px;
+  }
+  .cmp-card {
+    background: var(--surface2);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .cmp-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+  }
+  .cmp-card p, .cmp-card li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .cmp-card ul { padding-left: 14px; margin-bottom: 0; }
+  .cmp-card li { margin-bottom: 2px; }
+
+  /* Layer cards */
+  .layer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 12px 0 16px;
+  }
+  .layer-card {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .layer-card.l1 { background: var(--green-light); border-color: #a7f3d0; }
+  .layer-card.l2 { background: var(--accent2-light); border-color: #bfdbfe; }
+  .layer-card.l3 { background: var(--orange-light); border-color: #fde68a; }
+  .layer-card.l4 { background: var(--accent-light); border-color: #ddd6fe; }
+  .layer-card .num {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .layer-card.l1 .num { color: var(--green); }
+  .layer-card.l2 .num { color: var(--accent2); }
+  .layer-card.l3 .num { color: var(--orange); }
+  .layer-card.l4 .num { color: var(--accent); }
+  .layer-card .name { font-size: 13px; font-weight: 600; margin: 4px 0; color: var(--text-primary); }
+  .layer-card .desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Collapsible scenario tables */
+  .scenario-table { margin: 8px 0 16px; }
+  .scenario-table table { margin: 0; }
+  .scenario-table th {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+  .scenario-table td {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .scenario-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 16px 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .scenario-title .brand { font-size: 12px; font-weight: 500; padding: 1px 8px; border-radius: 4px; }
+  .brand-huawei { background: var(--red-light); color: var(--brand-huawei); }
+  .brand-volc { background: #f0fdf4; color: #16a34a; }
+  .brand-xpeng { background: #eff6ff; color: #1467f5; }
+  .brand-nio { background: #ecfeff; color: #00b3d7; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero { padding: 56px 16px 40px; }
+    .hero h1 { font-size: 26px; }
+    .section { padding: 20px 16px; }
+    .cmp-grid { grid-template-columns: 1fr; }
+    .layer-grid { grid-template-columns: 1fr 1fr; }
+    .hero-meta { flex-direction: column; gap: 8px; align-items: center; }
+    .section table { font-size: 12px; }
+    .section th, .section td { padding: 6px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">SPECIAL FEATURE</div>
+    <h1>2026北京车展 · <em>报告</em></h1>
+    <p>四条主线，拆解权力转移、竞争跃迁、AI Agent 上车与端侧 AI 趋势。</p>
+    <div class="hero-meta">
+      <span>📅 2026年4月24日–5月3日</span>
+      <span>📊 1,451辆展车 · 181场全球首发</span>
+      <span>🏛️ 38万m² · 17个展馆</span>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <a href="evweekly.html" class="nav-back">← 返回周报</a>
+    <span class="nav-divider"></span>
+    <a href="#power" class="nav-link">权力转移</a>
+    <a href="#competition" class="nav-link">竞争跃迁</a>
+    <a href="#undercurrent" class="nav-link">暗流涌动</a>
+    <a href="#human" class="nav-link">「被理解」的生意</a>
+    <a href="#edge" class="nav-link">端侧AI</a>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Sources -->
+  <div class="section">
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:0;">
+      <strong style="color:var(--text-secondary);">分析框架基于</strong> 麦肯锡、J.P. Morgan、CGTN、兴业研究、腾讯新闻、AutoNewGen、雷锋网、IT之家等来源的深度报道
+    </p>
+  </div>
+
+  <!-- Thread 1: Power Shift -->
+  <div class="section" id="power">
+    <div class="section-number">1</div>
+    <h2>权力转移 —— <em>谁在定义汽车</em></h2>
+    <div class="section-sub">竞争单位正从"品牌vs品牌"变成"生态vs生态"</div>
+
+    <h3>🔹 供应链从幕后到台前</h3>
+    <p>CATL 首次与宝马、保时捷同馆展出。地平线在 B3 馆与丰田同馆——"征程星睿"舱驾一体芯片节省单车 1,500–4,000 元成本。</p>
+    <div class="insight-block"><strong>核心洞察：</strong> 技术参数正在取代品牌故事成为消费决策新语言。消费者开始问"这车用什么电池、谁的芯片"而非仅仅看车标。</div>
+
+    <h3>🔹 华为的"三层渗透"</h3>
+    <table>
+      <tr><th>层级</th><th>模式</th><th>代表</th></tr>
+      <tr><td>全栈级（灵魂）</td><td>华为深度定义</td><td>问界 / 智界</td></tr>
+      <tr><td>方案级（大脑）</td><td>搭载华为乾昆智驾</td><td>奥迪 Q5L（首款搭载华为智驾的豪华燃油SUV）</td></tr>
+      <tr><td>零部件级（器官）</td><td>局部采用华为技术</td><td>越来越多车型局部采用</td></tr>
+    </table>
+
+  </div>
+
+  <!-- Thread 2: Competition -->
+  <div class="section" id="competition">
+    <div class="section-number">2</div>
+    <h2>竞争跃迁 —— <em>赢的逻辑变了</em></h2>
+    <div class="section-sub">从单点技术到体系化竞争力，从性价比到技术溢价</div>
+
+    <h3>🔹 体系化取代单点</h3>
+    <p>比亚迪「大唐」24小时订单3万台——靠的不是单项黑科技，而是"制造+补能+技术架构"的体系。大众ID. ERA 9X上市首小时锁单11,079台（锁单含金量远超小定/大定）。</p>
+    <div class="insight-block"><strong>核心洞察：</strong> 技术趋于同质时，订单分化的真正驱动因素是体系能力，而非参数。</div>
+
+    <h3>🔹 技术溢价取代性价比</h3>
+    <table>
+      <tr><th>车型</th><th>价格</th><th>核心技术标志</th></tr>
+      <tr><td>理想 L9 Livis</td><td>55.98万</td><td>双5nm自研马赫芯片（2560 TOPS）</td></tr>
+      <tr><td>蔚来 ES9</td><td>~50万级</td><td>自研5nm神玑NX9031</td></tr>
+      <tr><td>小鹏 GX</td><td>39.98万起</td><td>4颗图灵芯片（3000 TOPS）</td></tr>
+      <tr><td>比亚迪 大唐</td><td>~40万级</td><td>第五代DM + 兆瓦闪充 + 全产业链自主</td></tr>
+    </table>
+    <p>四款车用自研5nm芯片——不是技术选择而是<strong>战略豪赌</strong>。在 BBA 最强势的细分市场正面进攻。</p>
+  </div>
+
+  <!-- Thread 3: Undercurrents -->
+  <div class="section" id="undercurrent">
+    <div class="section-number">3</div>
+    <h2>暗流涌动 —— <em>被忽视的结构性力量</em></h2>
+    <div class="section-sub">报道不提的，才是最值得写的</div>
+
+    <h3>🔹 底盘全线控化元年</h3>
+    <p>理想 L9 Livis：全球首款同时搭载 EMB（线控制动）+ SBW（线控转向）+ 全主动悬架的量产车。</p>
+    <div class="insight-block"><strong>HMI设计师关注：</strong> 线控底盘取消机械连接后，方向盘反馈、制动脚感都将变成软件定义的体验——直接进入 HMI 设计领域。</div>
+
+    <h3>🔹 8分钟500公里的"充电焦虑终结"</h3>
+    <p>CATL 神行 Gen3：6分27秒 10%→98%，1,000次快充后容量保持>90%。全国高速3,000+座超快充站（2024年的10倍）。保时捷、丰田宣布在中国采用中国充电标准——<strong>技术标准的输出</strong>。</p>
+
+    <h3>🔹 成本暗流</h3>
+    <p>J.P. Morgan 数据：锂、铜、存储芯片涨价导致每辆车多花 5,000–6,000 元，其中存储芯片单项 2,500–3,000 元/车。盈利影响从 2026 年 Q2 开始显现。</p>
+  </div>
+
+  <!-- Thread 4: Being Understood -->
+  <div class="section" id="human">
+    <div class="section-number">4</div>
+    <h2>「被理解」的生意 —— <em>氛围、情绪与 AI Agent</em></h2>
+    <div class="section-sub">AI Agent 上车、情绪工程、HMI角色跃迁、ADAS普惠化</div>
+
+    <h3>🔹 AI Agent 的递进层次</h3>
+    <div class="layer-grid">
+      <div class="layer-card l1">
+        <div class="num">L1</div>
+        <div class="name">功能可用</div>
+        <div class="desc">语音助手执行指令<br>"打开空调"</div>
+      </div>
+      <div class="layer-card l2">
+        <div class="num">L2</div>
+        <div class="name">真的好用</div>
+        <div class="desc">跨域理解+主动服务<br>"一次对话完成多件事"</div>
+      </div>
+      <div class="layer-card l3">
+        <div class="num">L3</div>
+        <div class="name">意图推理</div>
+        <div class="desc">模糊表达自动分解<br>"去接孩子"→自动规划</div>
+      </div>
+      <div class="layer-card l4">
+        <div class="num">L4</div>
+        <div class="name">被理解感</div>
+        <div class="desc">系统预判你还没说出口的需求</div>
+      </div>
+    </div>
+
+    <h3>🔹 预判场景全景（按品牌）</h3>
+
+    <div class="scenario-title"><span class="brand brand-huawei">华为鸿蒙</span> HarmonySpace 6</div>
+    <div class="scenario-table">
+      <table>
+        <tr><th>预判什么</th><th>怎么触发</th><th>自动执行什么</th><th>联动域</th></tr>
+        <tr><td>你要去公司</td><td>连续数日8:00导航，某天必经路管制</td><td>主动提醒绕行并规划新路线</td><td>导航+路况+记忆</td></tr>
+        <tr><td>你需要一次完成多件事</td><td>"去商场接人，路上买咖啡，最后去公司"</td><td>自动分解三个子任务并行执行</td><td>导航+出行+搜索</td></tr>
+        <tr><td>孩子哭闹的原因</td><td>AMS检测+车速/环境噪音分析</td><td>主动排查→"面对面哄娃"：前屏显示后排</td><td>AMS+座舱屏+音频</td></tr>
+        <tr><td>手即将被车窗夹到</td><td>AMS识别儿童手接近车窗</td><td>预判式防夹，碰到之前停下</td><td>AMS+车窗电机</td></tr>
+        <tr><td>生命体被遗忘</td><td>锁车后星闪检测呼吸</td><td>APP强推提醒，自动通风</td><td>AMS+车控+互联</td></tr>
+        <tr><td>司机疲劳</td><td>监测呼吸节律/坐姿异常</td><td>预警→推荐休息区→提神音乐</td><td>AMS+HMI+导航</td></tr>
+        <tr><td>停车缴费</td><td>到达停车场出口</td><td>自动扣费→道闸放行</td><td>支付Agent</td></tr>
+      </table>
+    </div>
+
+    <div class="scenario-title"><span class="brand brand-volc">火山引擎</span> 豆包座舱（已装车700万辆）</div>
+    <div class="scenario-table">
+      <table>
+        <tr><th>预判什么</th><th>怎么触发</th><th>自动执行什么</th></tr>
+        <tr><td>孩子睡着了</td><td>状态识别</td><td>主动降风速→关窗→调灯光→放低座椅</td></tr>
+        <tr><td>孩子醒来哭闹</td><td>状态变化</td><td>唱歌/放动画/模仿妈妈口吻安抚</td></tr>
+        <tr><td>记住哄娃经验</td><td>每次出现同一场景</td><td>优化策略，沉淀可复用技能</td></tr>
+        <tr><td>要过窄路</td><td>"要过窄路了"</td><td>自动打开360视角</td></tr>
+        <tr><td>仪表盘警告灯不懂</td><td>"这个灯什么意思"</td><td>读取数据+说明书→主动解释</td></tr>
+      </table>
+    </div>
+
+    <div class="scenario-title"><span class="brand brand-xpeng">小鹏天玑</span> AIOS 6.0（已OTA推送）</div>
+    <div class="scenario-table">
+      <table>
+        <tr><th>预判什么</th><th>执行什么</th></tr>
+        <tr><td>你是谁</td><td>面容ID→切换座椅/驾驶模式/音乐/空调</td></tr>
+        <tr><td>需要更直观的路况</td><td>SR模式主动放大显示车道线/行人/前车</td></tr>
+        <tr><td>想充电/缴费</td><td>弹出支付码/询问降地锁/提前电池预热</td></tr>
+        <tr><td>你疲劳了</td><td>主动提醒→询问醒神模式或推荐休息区</td></tr>
+        <tr><td>该OTA升级了</td><td>检测空闲→主动询问安装</td></tr>
+      </table>
+    </div>
+
+    <div class="scenario-title"><span class="brand brand-nio">蔚来NOMI</span> 3.0（Banyan 榕 3.0）</div>
+    <div class="scenario-table">
+      <table>
+        <tr><th>预判什么</th><th>执行什么</th></tr>
+        <tr><td>需要换电</td><td>主动提醒→推荐沿途换电站→规划补能路线</td></tr>
+        <tr><td>空气质量差</td><td>自动内循环+香氛+空气净化</td></tr>
+        <tr><td>你不舒服/疲劳</td><td>识别"托腮"→自动播放冥想音乐</td></tr>
+        <tr><td>孩子在睡觉</td><td>立即调低音量+关后排扬声器</td></tr>
+        <tr><td>儿童坐得不舒服</td><td>优化座椅压力+调空调风向</td></tr>
+      </table>
+    </div>
+
+    <h3>🔹 三大AI Agent方案对比</h3>
+    <table>
+      <tr><th>方案</th><th>代表</th><th>架构特色</th><th>差异化</th></tr>
+      <tr><td>鸿蒙座舱</td><td>华为HarmonySpace 6</td><td>MoLA 2.0 + AMS（800万RGB+200万IR+星闪）+ A2A</td><td>全栈自研，硬件到生态</td></tr>
+      <tr><td>星火座舱</td><td>科大讯飞</td><td>SparkAuto-EMM（0.5B-7B端侧）+ MBTI人格+ MasterAgent</td><td>模型矩阵最全，23年积累</td></tr>
+      <tr><td>豆包座舱</td><td>火山引擎</td><td>Agentic AI + "One Brain"三引擎+ 700万台装车</td><td>生态最广，学习成长引擎</td></tr>
+    </table>
+
+    <h3>🔹 真实用户反馈</h3>
+    <p style="font-weight:600;color:var(--text-primary);">✅ 正面：问界小艺「习惯推荐」</p>
+    <div class="quote-block">"冬天上车，它会主动打开座椅加热和空调；夏天则自动调低温度、开启通风。这不是预设程序，而是它通过15个左右的行车周期学习后自动生成的。上车即舒适，连'说一句话'的麻烦都省了。"<br>——汽车之家车家号车主投稿</div>
+
+    <p style="font-weight:600;color:var(--text-primary);">✅ 正面：蔚来NOMI「主动消息摘要 + 语音备忘」</p>
+    <div class="quote-block">"现在的NOMI更像一个坐在副驾上贴心的小助手，能对消息主动摘要总结。NOMI记事等于给我配备了一个私人小秘书。"<br>——蔚来官网口碑精选</div>
+
+    <p style="font-weight:600;color:var(--red);">❌ 负面：NOMI换电导航翻车</p>
+    <div class="warn-block">抖音视频标题："小Nomi太坏了，不优先换电把我导来体验高速充电"——主动决策并不总是靠谱。</div>
+
+    <p style="font-weight:600;color:var(--red);">❌ 智能座舱通用高频抱怨（VOC大数据）</p>
+    <div class="warn-block">"想调个后视镜加热要点开三级菜单"（负面情绪得分-8.5）<br>"我跟后排说话它非要插嘴，我想听音乐它给我开窗"<br>"车机自带地图太难用，系统还经常卡死重启"<br><br>核心矛盾：用户对高频功能易用性要求极高，车企却在投低频炫技功能。</div>
+
+    <div class="insight-block"><strong>现状判断：</strong> 目前能稳定体验到的主动预判主要停留在<strong>习惯学习型</strong>（第一层）。环境感知型以上的高阶预判多数还处于发布会Demo或OTA预告阶段。</div>
+  </div>
+
+  <!-- Edge-side AI -->
+  <div class="section" id="edge">
+    <div class="section-number">—</div>
+    <h2>端侧AI —— <em>智能座舱的必由之路</em></h2>
+    <div class="section-sub">面壁智能 × 清华 × 中国汽车报《智能座舱白皮书》核心议题</div>
+
+    <h3>🔹 为什么是"端侧优先"</h3>
+    <table>
+      <tr><th>优势</th><th>含义</th><th>为什么重要</th></tr>
+      <tr><td>隐私不出车</td><td>声纹/人脸等生物数据完全本地处理</td><td>座舱是移动私人空间</td></tr>
+      <tr><td>断网可用</td><td>隧道/地库/偏远地区不中断</td><td>驾驶不能依赖网络覆盖</td></tr>
+      <tr><td>毫秒级响应</td><td>本地推理，无需云端时延</td><td>关键指令必须在毫秒内完成</td></tr>
+    </table>
+    <p>面壁智能提出<strong>密度定律</strong>：大模型能力密度每3.5个月翻一番。未来两年内，目前需要云端的复杂能力也将在终端芯片上运行。</p>
+    <div class="insight-block"><strong>架构定位：</strong> "端侧为基，云侧为缘"——端侧主内（实时+隐私），云侧主外（复杂生成+知识检索），二者协生。</div>
+
+    <h3>🔹 已量产落地的车型</h3>
+    <table>
+      <tr><th>品牌</th><th>车型</th><th>端侧方案</th><th>已落地的主动场景</th></tr>
+      <tr><td>吉利</td><td>银河 M9</td><td>MiniCPM + Eva 超拟人情感智能体</td><td>"我有点累了"→关怀；"去接孩子"→自动补全；无感空调/车窗</td></tr>
+      <tr><td>长安马自达</td><td>EZ-60</td><td>MiniCPM</td><td>同上（同样端侧方案）</td></tr>
+      <tr><td>50+品牌</td><td>145+款量产车</td><td>火山引擎豆包（端云混合）</td><td>"要过窄路了"→自动开360；警告灯识别解释</td></tr>
+      <tr><td>多品牌</td><td>东风奕派/荣威等</td><td>科大讯飞SparkAuto-EMM</td><td>150ms意图理解，80+多模态能力</td></tr>
+    </table>
+
+    <h3>🔹 真实反馈</h3>
+    <p style="font-weight:600;color:var(--text-primary);">媒体评价（银河M9 Eva）：</p>
+    <div class="quote-block">"Eva超拟人情感智能体凭借高度拟人化的交互方式，能够营造出科技感与情感温度并存的沉浸式体验。"</div>
+
+    <p style="font-weight:600;color:var(--text-primary);">车主评价（汽车之家论坛）：</p>
+    <div class="quote-block">"AI无感车控的自动雾灯最有用——我感觉可能有一大部分车友开了10来年车还没有用过雾灯，其实对安全保障的作用非常明显。"<br>注：同一篇帖子未提及Eva语音助手的日常使用体验。</div>
+
+    <div class="insight-block"><strong>现状：</strong> 端侧AI的技术优势已被行业共识接受并进入量产，但高阶主动预判功能仍以Demo展示为主。面壁智能预计2026年底装机30万台，尚处初期铺量阶段。</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>分析框架基于麦肯锡、J.P. Morgan、CGTN、兴业研究、腾讯新闻、AutoNewGen、雷锋网、IT之家等来源的深度报道</p>
+  <p style="margin-top:4px"><a href="evweekly.html">← 返回新能源汽车行业周报</a></p>
+</div>
+
+</body>
+</html>
