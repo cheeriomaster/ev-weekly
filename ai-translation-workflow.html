@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 翻译工作流程图</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #f5f5f4;
+      color: #2C2C2A;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #5F5E5A;
+      margin-bottom: 40px;
+    }
+
+    /* 流程节点 */
+    .flow-node {
+      position: relative;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    .flow-node .step-num {
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flow-node h2 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .flow-node p {
+      font-size: 13px;
+      color: #5F5E5A;
+    }
+
+    /* 颜色方案 */
+    .node-1 { background: #E6F1FB; border-color: #185FA5; }
+    .node-1 .step-num { background: #185FA5; }
+    .node-1 h2 { color: #042C53; }
+
+    .node-2 { background: #EEEDFE; border-color: #534AB7; }
+    .node-2 .step-num { background: #534AB7; }
+    .node-2 h2 { color: #26215C; }
+
+    .node-4 { background: #FBEAF0; border-color: #993556; }
+    .node-4 .step-num { background: #993556; }
+    .node-4 h2 { color: #4B1528; }
+
+    .node-5 { background: #FAECE7; border-color: #993C1D; }
+    .node-5 .step-num { background: #993C1D; }
+    .node-5 h2 { color: #4A1B0C; }
+
+    /* 子步骤列表 */
+    .sub-steps {
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .sub-steps li {
+      font-size: 12px;
+      color: #534AB7;
+      padding: 3px 0 3px 18px;
+      position: relative;
+    }
+    .sub-steps li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 9px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #AFA9EC;
+    }
+    .sub-steps li span {
+      color: #3C3489;
+      font-weight: 500;
+    }
+
+    /* 箭头 */
+    .arrow-down {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      height: 36px;
+      position: relative;
+    }
+    .arrow-down::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 28px;
+      background: #B4B2A9;
+    }
+    .arrow-down::before {
+      content: "";
+      position: absolute;
+      top: 22px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #B4B2A9;
+    }
+
+    /* 并行调研模块 */
+    .parallel-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+    .parallel-wrapper .main-col {
+      flex: 1;
+    }
+    .parallel-wrapper .side-col {
+      width: 220px;
+      flex-shrink: 0;
+    }
+
+    /* 调研卡片 */
+    .research-card {
+      background: #FAEEDA;
+      border: 1px solid #BA7517;
+      border-radius: 10px;
+      padding: 16px;
+      height: 100%;
+    }
+    .research-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #412402;
+      margin-bottom: 4px;
+    }
+    .research-card .badge {
+      display: inline-block;
+      font-size: 11px;
+      color: #854F0B;
+      background: #FAC775;
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .research-item {
+      margin-bottom: 10px;
+    }
+    .research-item .label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #633806;
+      margin-bottom: 2px;
+    }
+    .research-item .desc {
+      font-size: 12px;
+      color: #854F0B;
+    }
+    .research-item .tool {
+      font-size: 11px;
+      color: #BA7517;
+      margin-top: 2px;
+    }
+
+    /* 最终产出 */
+    .result-badge {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 12px 0;
+    }
+    .result-badge span {
+      display: inline-block;
+      background: #97C459;
+      color: #173404;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 32px;
+      border-radius: 20px;
+      border: 1px solid #3B6D11;
+    }
+
+    /* 分隔线 */
+    .divider {
+      max-width: 680px;
+      margin: 36px auto;
+      border: none;
+      border-top: 1px dashed #B4B2A9;
+    }
+
+    /* 辅助模块 */
+    .aux-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #2C2C2A;
+      margin-bottom: 16px;
+    }
+    .aux-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .aux-card {
+      background: #F1EFE8;
+      border: 1px solid #B4B2A9;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .aux-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2C2C2A;
+      margin-bottom: 8px;
+    }
+    .aux-card p {
+      font-size: 12px;
+      color: #5F5E5A;
+      margin-bottom: 4px;
+    }
+
+    /* 错误清单 */
+    .error-box {
+      max-width: 680px;
+      margin: 24px auto 0;
+      background: #CECBF6;
+      border: 1px solid #534AB7;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+    .error-box h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #26215C;
+      margin-bottom: 12px;
+    }
+    .error-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px 20px;
+    }
+    .error-item {
+      font-size: 12px;
+      color: #3C3489;
+      padding-left: 16px;
+      position: relative;
+    }
+    .error-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #7F77DD;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .parallel-wrapper { flex-direction: column; }
+      .parallel-wrapper .side-col { width: 100%; }
+      .aux-grid { grid-template-columns: 1fr; }
+      .error-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AI 翻译工作流程图</h1>
+    <p class="subtitle">从粗翻到最终交付的 6 步翻译工作流</p>
+
+    <!-- Step 1: 粗翻 -->
+    <div class="flow-node node-1">
+      <div class="step-num">1</div>
+      <h2>AI 粗翻（如云译客）</h2>
+      <p>快速通读，粗略了解全书大意、核心思想、文章脉络</p>
+    </div>
+
+    <div class="arrow-down"></div>
+
+    <!-- Step 2: AI 精翻 + Step 3: 调研 并行 -->
+    <div class="parallel-wrapper">
+      <div class="main-col">
+        <div class="flow-node node-2">
+          <div class="step-num">2</div>
+          <h2>AI 精翻</h2>
+          <p>选工具、调 Prompt、沉淀方案，产出高质量译稿</p>
+          <ul class="sub-steps">
+            <li><span>选取最佳 AI 工具</span> — 对比不同软件的翻译风格，找到最契合的</li>
+            <li><span>调试 Prompt</span> — 针对 AI 常见错误反复打磨，沉淀最优提示词</li>
+            <li><span>AI 精翻</span> — 用沉淀的 Prompt 进行翻译，与粗翻对比校验</li>
+          </ul>
+        </div>
+
+        <div class="arrow-down"></div>
+
+        <div class="flow-node node-4">
+          <div class="step-num">4</div>
+          <h2>个人能力提升</h2>
+          <p>根据前期调研，找到适合书籍的文字风格，提升文字功底与学科经验</p>
+        </div>
+
+        <div class="arrow-down"></div>
+
+        <div class="flow-node node-5">
+          <div class="step-num">5</div>
+          <h2>人工校对润色</h2>
+          <p>将调研信息和个人风格融入文字，对 AI 精稿进行最终润色</p>
+        </div>
+
+        <div class="arrow-down"></div>
+
+        <div class="result-badge">
+          <span>最终译稿</span>
+        </div>
+      </div>
+
+      <!-- 侧边调研模块 -->
+      <div class="side-col">
+        <div style="display:flex;align-items:center;height:36px;">
+          <div style="width:100%;border-top:2px dashed #B4B2A9;"></div>
+        </div>
+        <div class="research-card">
+          <h3>3. 调研工作</h3>
+          <span class="badge">可提前 / 并行进行</span>
+
+          <div class="research-item">
+            <div class="label">(a) 用户调研</div>
+            <div class="desc">预期读者是谁？性格爱好、阅读习惯、想从书中获得什么？</div>
+          </div>
+
+          <div class="research-item">
+            <div class="label">(b) 作者调研</div>
+            <div class="desc">写作初衷与表达方式？中外文化差异？哪些需要翻译适配？</div>
+          </div>
+
+          <div class="research-item">
+            <div class="label">(c) 背景信息调研</div>
+            <div class="desc">学科定位：前沿科学 vs 已有常识？专业 vs 业余？</div>
+          </div>
+
+          <div class="research-item">
+            <div class="label">推荐工具</div>
+            <div class="desc">WorkBuddy / Google NotebookLM 搜索整理</div>
+          </div>
+
+          <div class="research-item">
+            <div class="label">风格把握（关键）</div>
+            <div class="desc">多看作者采访视频、手稿、其他论文</div>
+            <div class="tool">AI 无法替代，需人工感知</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Step 6 辅助模块 -->
+    <div class="aux-title">6. 辅助模块</div>
+    <div class="aux-grid">
+      <div class="aux-card">
+        <h3>术语表处理</h3>
+        <p>不再拘泥于某一本"大辞典"</p>
+        <p>学界未统一的术语：参考豆瓣上评分高且多的同类书籍，选择最被广泛接受的译法</p>
+      </div>
+      <div class="aux-card">
+        <h3>进度管理</h3>
+        <p>用 Typeless + AI 语音工具管理翻译进度</p>
+        <p>对着讲话记录（如"第1-5章翻完了"），需要时问 AI 查询剩余任务</p>
+      </div>
+    </div>
+
+    <!-- AI 常见错误 -->
+    <div class="error-box">
+      <h3>Step 2 — AI 翻译常见错误（调试重点）</h3>
+      <div class="error-grid">
+        <div class="error-item">自行增译</div>
+        <div class="error-item">前后文缺乏连贯性</div>
+        <div class="error-item">使用奇怪的词</div>
+        <div class="error-item">标点符号出错</div>
+        <div class="error-item">专业术语不够了解</div>
+        <div class="error-item">开始和人对话</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -558,6 +558,7 @@
       <span class="filter-label">日期</span>
       <span class="chip active" data-filter="date" data-value="all">全部</span>
       <span class="chip chip-feature" onclick="location.href='autoshow2026.html'">🚗 北京车展专题</span>
+      <span class="chip" data-filter="date" data-value="20260601-20260607">6月1日–6月7日</span>
       <span class="chip" data-filter="date" data-value="20260518-20260525">5月18日–5月25日</span>
       <span class="chip" data-filter="date" data-value="20260504-20260510">5月4日–5月10日</span>
       <span class="chip" data-filter="date" data-value="20260428-20260503">4月28日–5月3日</span>
@@ -802,6 +803,258 @@
         </div>
       </div>
     </div>
+
+
+    <!-- ===== REPORT 10: 6/1–6/7 ===== -->
+    <div class="report-card"
+         id="r10"
+         data-date="20260601-20260607"
+         data-brands="nio xiaomi li xpeng huawei vw">
+
+      <div class="report-header">
+        <div class="report-date">2026年6月1日 – 6月7日</div>
+        <div class="report-title">新能源汽车行业周报 · 第10期</div>
+        <div class="report-brands">
+          <span class="brand-tag nio">蔚来</span>
+          <span class="brand-tag xiaomi">小米</span>
+          <span class="brand-tag li">理想</span>
+          <span class="brand-tag xpeng">小鹏</span>
+          <span class="brand-tag huawei">华为</span>
+          <span class="brand-tag vw">大众</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-box">
+        <div class="summary-box-label" style="color:var(--green)">本周一句话总结</div>
+        <strong>本周是"5月交付数据集中揭晓+高通峰会定义AI座舱方向+小鹏AIOS 6.2重磅OTA"的行业标准周"</strong>：蔚来李斌在高峰会上宣告"汽车公司必须成为AI公司"，小鹏X9获推AIOS 6.2.0实现智驾与座舱双重跃升，理想官宣6月技术发布会将展示自研芯片与基座模型，行业竞争核心正式从电动化参数切换至智能化体验。<strong>新能源渗透率5月达63%创历史新高，"AI定义汽车"不再是口号而是共识。</strong>
+      </div>
+
+      <div class="sections">
+
+        <!-- 综合洞察 -->
+        <div class="section open" data-topic="insight">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-insight">💡</div>
+            <div class="section-title">综合洞察</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="insight-item">
+              <div class="insight-title">"AI座舱"成为行业共识：从被动执行到主动认知</div>
+              6月4-5日，2026高通汽车技术与合作峰会在无锡举行，聚焦AI智能体、舱驾融合、ADAS等前沿方向。蔚来创始人李斌在峰会上明确提出<strong>"认知座舱"概念</strong>——"现在的汽车公司，必须成为AI公司，现在的智能座舱，必须成为AI座舱。"与传统"智能座舱"被动响应不同，认知座舱强调车主动理解用户需求并自主执行，核心是实现全面Agent化。同场高通展示了100余款舱驾方案车型，行业从"连接"迈向"全域AI"的趋势已成定局。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">5月交付数据揭晓：新势力集体高增长，鸿蒙智行环比飙升41%</div>
+              鸿蒙智行46,122台（环比+41%）、蔚来37,705台（同比+62.3%）、理想33,350台、小鹏32,158台（同比+230%）、小米30,000+台。<strong>新能源渗透率5月达约63%，再创历史新高。</strong>各品牌高增长的共同驱动力：新品周期（GX/YU7 GT/M9/ES9等集中上市/交付）+智能化标签（智驾/座舱成为第一卖点）。
+            </div>
+            <div class="insight-item">
+              <div class="insight-title">粤港澳大湾区车展闭幕：9天预定成交82.5亿元</div>
+              2026（第三十届）粤港澳大湾区车展于6月7日闭幕，81万人次观展，预定成交车辆39,253辆，预定成交金额约82.5亿元。小米YU7 GT、新款乐道L60、智界V9等均在车展期间亮相或开启交付。
+            </div>
+          </div>
+        </div>
+
+        <!-- ADAS -->
+        <div class="section" data-topic="adas">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-adas">🚗</div>
+            <div class="section-title">ADAS（高级驾驶辅助系统）</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏 — AIOS 6.2.0推送，VLA 2.0 + 车道级渲染全面升级</span>
+              6月6日，小鹏X9 AIOS 6.2.0正式推送。核心智驾更新：<strong>辅助驾驶车道级渲染</strong>（导航路径与车道级感知深度融合，实时显示前方路况，NGP驾驶意图可视化，默认开启）；<strong>园区/地库NGP漫游</strong>（无导航状态下支持停车场和园区自动漫游，可绕行行人/车辆/障碍物）；<strong>P挡直接开启NGP</strong>（任意位置P挡即可激活）；<strong>终点车位选项</strong>（导航至已学习车位可选自动泊入）；<strong>收藏车位被占漫游找位</strong>。Max版车主VLA 2.0蒸馏版开发中。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来 — NWM世界模型持续演进，1-5月累计交付超15万台</span>
+              李斌在高通峰会上披露，今年1-5月蔚来交付超15万台高端纯电智能汽车，同比增近70%，且全部搭载高通芯片。蔚来NWM世界模型此前已随Banyan 3.3.0版本推送，可在100毫秒内同步推演216种潜在行车场景。李斌提出"认知座舱"概念，标志着蔚来智驾从"看得清"到"想得明"的技术跃迁。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">华为 — 智界V9首批交付，6颗激光雷达+ADS全标配</span>
+              6月6日，智界V9全国首批交付启动。作为鸿蒙智行首款旗舰MPV，全系标配896线激光雷达与华为ADS，预售72小时订单突破22,500台。新款问界M9于6月启动批量交付，1小时大定突破11,000辆，24小时大定突破20,000台。
+            </div>
+            <div class="tech-block" data-brand="li">
+              <span class="tech-brand-name li">理想 — 官宣6月技术发布会，自研芯片+基座模型即将揭开面纱</span>
+              理想汽车5月交付33,350台，全新L9 Livis上市两周累计订单超1万台（90%选顶配）。公司宣布将于6月举办专场技术发布会，深度讲解<strong>车机交互、基座模型、辅助驾驶、系统Agent和自研芯片</strong>等核心技术能力。这是理想首次系统展示其底层技术栈，市场关注度极高。
+            </div>
+            <div class="tech-block" data-brand="vw">
+              <span class="tech-brand-name vw">大众 — ID.ERA 5S工信部申报，首款支持城市NOA的大众轿车</span>
+              ID.ERA 5S完成工信部申报，定位中型插电混动轿车，搭载1.5L发动机+电机，<strong>大众品牌全球首款支持城市NOA的轿车</strong>，预计Q3上市。标志着合资品牌在智能驾驶领域的正式突围。
+            </div>
+          </div>
+        </div>
+
+        <!-- 汽车AI -->
+        <div class="section" data-topic="ai">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ai">🤖</div>
+            <div class="section-title">汽车AI</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">蔚来 — "认知座舱"：从被动响应到主动服务的范式转换</span>
+              李斌在高通峰会上系统阐述了"认知座舱"理念——传统智能座舱是被动响应（用户指令→车执行），认知座舱是主动服务（车自主判断→主动执行），AI角色从"工具"升级为"智能体"。李斌强调："AI正在重构下一代座舱体验，以后智能座舱的核心体验，必须全面Agent化。"他还提出与高通携手共建"持续迭代十年仍好用"的座舱软硬件生态。
+            </div>
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏 — 手机化身后排遥控器，AI座舱体验再拓展</span>
+              AIOS 6.2.0中新增<strong>手机化身后排遥控器</strong>功能：手机通过蓝牙连接后可控制后排屏幕、音乐、座椅、空调、遮阳帘、阅读灯等，支持iOS和Android。这是"手机-车机"协同AI体验的进一步深化。
+            </div>
+            <div class="tech-block" data-brand="huawei">
+              <span class="tech-brand-name huawei">高通峰会 — AI智能体上车，舱驾融合进入量产阶段</span>
+              高通汽车技术峰会展示超过100款舱驾方案车型，AI Agent、端侧计算、物理AI等前沿技术集中亮相。车联天下等生态伙伴展示了智能座舱、舱驾融合与中央计算方案。行业正从"芯片+屏幕"的硬件堆砌，走向"AI智能体+整车操作系统"的软件定义时代。
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA -->
+        <div class="section" data-topic="ota">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-ota">📡</div>
+            <div class="section-title">OTA更新</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏X9 — AIOS 6.2.0（6月6日推送）</span>
+              本次OTA是X9今年最重要的版本更新，涵盖智驾、泊车、导航、座舱、连接、App六大维度共14项功能新增/优化。<strong>智驾</strong>：VLA 2.0 v2、车道级渲染、园区/地库NGP漫游、P挡直接开启NGP；<strong>泊车</strong>：终点车位选项、收藏车位被占漫游找位、泊车风格新增"效率"模式；<strong>导航</strong>：智能推荐路线（学习驾驶习惯）；<strong>座舱</strong>：手机后排遥控器、后视镜展开时机可选、车窗拨杆方向可定制、间歇雨刮灵敏度调节、停止模式指示灯；<strong>连接</strong>：蓝牙自动转移手机音频至车机；<strong>App</strong>：首页显示VIN/车牌号、智驾统计新增"最佳纪录"与"高光时刻"。
+            </div>
+            <div class="tech-block" data-brand="nio li huawei xiaomi vw">
+              <span class="tech-brand-name nio">蔚来</span><span class="tech-brand-name li">理想</span><span class="tech-brand-name huawei">华为</span><span class="tech-brand-name xiaomi">小米</span><span class="tech-brand-name vw">大众</span>
+              <span class="no-content">本周无新OTA版本公告。蔚来NWM世界模型新版本确认6月推送（含乐道），理想6月技术发布会预期包含OTA相关内容。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HMI -->
+        <div class="section" data-topic="hmi">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-hmi">🖥️</div>
+            <div class="section-title">HMI设计</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <div class="tech-block" data-brand="xpeng">
+              <span class="tech-brand-name xpeng">小鹏AIOS 6.2.0 — 细节体验全面打磨</span>
+              <strong>车道级渲染可视化</strong>：导航路径与车道级感知深度融合，在仪表盘/HUD上实时渲染前方路况，NGP驾驶意图清晰可辨，提升人机共驾信心；<strong>手机后排遥控器</strong>：后排乘客无需触控屏幕，通过手机即可操控后排娱乐屏、座椅、空调等，交互方式从"触控"扩展到"远程遥控"；<strong>泊车风格可调</strong>：新增"效率"模式，用户可根据场景在"标准"与"效率"间切换；<strong>蓝牙自动转移音频</strong>：上车后手机媒体/通知音自动转至车机，减少"连接了蓝牙但通知还响在手机上"的体验断点。
+            </div>
+            <div class="tech-block" data-brand="nio">
+              <span class="tech-brand-name nio">乐道L60焕新版 — 后排双屏+旗舰技术下放</span>
+              新款乐道L60在HMI方面最大升级是新增<strong>17.3英寸3K后排娱乐屏+8英寸场景屏</strong>，组成后排双屏布局。同时搭载蔚来自研5nm神玑NX9031芯片+SkyOS·天枢整车全域操作系统+蔚来世界模型，实现旗舰级技术向20万级市场下放。6月11日正式上市。
+            </div>
+          </div>
+        </div>
+
+        <!-- 各品牌内容概览 -->
+        <div class="section" data-topic="overview">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-overview">📋</div>
+            <div class="section-title">各品牌内容概览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+
+            <div class="brand-overview" data-brand="nio">
+              <div class="brand-overview-name" style="color:var(--brand-nio)">蔚来 NIO</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>5月交付37,705台</strong>（同比+62.3%），1-5月累计超15万台；ES9于5月27日上市，5月28日开启交付，整车购买49.8-62.8万，BaaS 39-52万；李斌在高通峰会提出"认知座舱"概念，宣告AI公司转型；新款乐道L60开启预售，6月11日上市，106项升级+激光雷达+神玑芯片；萤火虫品牌达成第6万台交付。</div></div>
+              <div class="platform-row"><span class="platform-badge">技术进展</span><div class="platform-content">NWM世界模型6月推送确认；"认知座舱"概念提出——从被动响应到主动服务，全面Agent化；与高通共建"持续迭代十年仍好用"的座舱软硬件生态。</div></div>
+              <div class="platform-row"><span class="platform-badge">重要新闻</span><div class="platform-content"><a href="https://news.qq.com/rain/a/20260606A0722F00" target="_blank">李斌：汽车公司必须成为AI公司</a>（腾讯新闻）；<a href="https://finance.sina.com.cn/stock/estate/integration/2026-06-05/doc-iniaiusu8496843.shtml" target="_blank">蔚来李斌在高通峰会演讲</a>（新浪财经）；<a href="https://www.sohu.com/a/1030530671_121885030" target="_blank">蔚来5月交付超3.7万台</a>（搜狐）。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xiaomi">
+              <div class="brand-overview-name" style="color:var(--brand-xiaomi)">小米汽车</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>5月交付30,000+台</strong>，YU7标准版（23.35万起）和YU7 GT（38.99万起）正式交付；YU7 GT刷新纽北SUV圈速纪录（7:22.755），车手任周灿成为首位获纽北官方圈速认证的中国车手；粤港澳大湾区车展开启深圳首批YU7 GT交付。</div></div>
+              <div class="platform-row"><span class="platform-badge">重要新闻</span><div class="platform-content"><a href="https://www.sohu.com/a/1030500119_122066678" target="_blank">小米汽车5月交付超3万台</a>（搜狐）；<a href="https://news.qq.com/rain/a/20260602A04X2X00" target="_blank">YU7 GT车主纪实</a>（腾讯新闻）。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="li">
+              <div class="brand-overview-name" style="color:var(--brand-li)">理想汽车</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>5月交付33,350台</strong>，L9 Livis上市两周订单超1万台（90%选顶配，产能爬坡月产4000-5000台）；i6连续三个月交付破2万台；<strong>6月技术发布会官宣</strong>——将深度讲解车机交互、基座模型、辅助驾驶、系统Agent和自研芯片；全新L8将于6月底发布；现金储备943亿元，10亿美元回购计划已执行约14%。</div></div>
+              <div class="platform-row"><span class="platform-badge">重要新闻</span><div class="platform-content"><a href="https://finance.sina.com.cn/jjxw/2026-06-01/doc-inhzwyqi8389413.shtml" target="_blank">理想5月交付33350辆，6月技术发布会</a>（新浪财经）；<a href="https://tech.ifeng.com/c/8tbYEDGHXDn" target="_blank">理想5月交付+L8官宣6月底发布</a>（凤凰科技）。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="xpeng">
+              <div class="brand-overview-name" style="color:var(--brand-xpeng)">小鹏汽车</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>5月交付32,158台</strong>（同比+230%），GX上市12h大定24,863辆；<strong>AIOS 6.2.0正式推送</strong>（6月6日），14项功能更新；GX Robotaxi量产下线，中国首台全栈自研L4级Robotaxi；下半年计划交付4款全球化车型。</div></div>
+              <div class="platform-row"><span class="platform-badge">重要新闻</span><div class="platform-content"><a href="https://finance.sina.com.cn/tech/digi/2026-06-06/doc-iniankfm8618088.shtml" target="_blank">小鹏X9 AIOS 6.2.0推送</a>（IT之家）；<a href="https://www.xiaopeng.com/news/company_news/5568.html" target="_blank">小鹏5月交付32158台</a>（小鹏官网）。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="huawei">
+              <div class="brand-overview-name" style="color:var(--brand-huawei)">华为汽车（问界/智界/享界/尚界）</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>鸿蒙智行5月交付46,122台</strong>（环比+41%），年内累计19万台；新款问界M9 6月启动批量交付，24h大定破2万；<strong>智界V9全国首批交付</strong>（6月6日），72h预售订单超22,500；尚界Z7/Z7T 5月30日首批交付，两天交付破2,000台；智界品牌前5月销量骤降67.5%，管理层洗牌，V9成"背水一战"关键。</div></div>
+              <div class="platform-row"><span class="platform-badge">重要新闻</span><div class="platform-content"><a href="https://www.autohome.com.cn/news/202606/1314611.html" target="_blank">鸿蒙智行5月交付4.6万台</a>（汽车之家）；<a href="https://news.qq.com/rain/a/20260602A0BBDT00" target="_blank">问界M9 6月启动批量交付</a>（腾讯新闻）；<a href="https://finance.sina.com.cn/roll/2026-06-08/doc-iniaruxy5792562.shtml" target="_blank">智界V9首批交付+管理层洗牌</a>（新浪财经）。</div></div>
+            </div>
+
+            <div class="brand-overview" data-brand="vw">
+              <div class="brand-overview-name" style="color:var(--brand-vw)">大众汽车</div>
+              <div class="platform-row"><span class="platform-badge">本周核心事件</span><div class="platform-content"><strong>ID.ERA 5S完成工信部申报</strong>，大众品牌全球首款支持城市NOA的轿车，定位中型插电混动轿车，1.5L发动机+电机，预计Q3上市。标志着合资品牌在智能驾驶领域的正式突围。</div></div>
+              <div class="platform-row"><span class="platform-badge">重要新闻</span><div class="platform-content"><a href="https://www.autohome.com.cn/news/202605/1314196.html" target="_blank">ID.ERA 5S工信部申报</a>（汽车之家）；<a href="https://auto.cctv.com/2026/05/11/ARTIxVK0WAJVoeB49nBYyHQj260511.shtml" target="_blank">大众首款城市NOA轿车</a>（央视汽车）。</div></div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 新车型上市 -->
+        <div class="section" data-topic="vehicles">
+          <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon icon-vehicles">🚙</div>
+            <div class="section-title">新车型上市速览</div>
+            <div class="section-arrow">▼</div>
+          </div>
+          <div class="section-body">
+            <table class="vehicle-table">
+              <thead>
+                <tr>
+                  <th>品牌</th>
+                  <th>发布/上市时间</th>
+                  <th>车型</th>
+                  <th>价格（万元）</th>
+                  <th>定位人群</th>
+                  <th>尺寸级别</th>
+                  <th>核心特点</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-brand="nio">
+                  <td><strong style="color:var(--brand-nio)">乐道（蔚来）</strong></td>
+                  <td>6/11正式上市</td>
+                  <td><span class="car-name">新款L60</span></td>
+                  <td><span class="car-price">待公布</span></td>
+                  <td>主流家用SUV市场</td>
+                  <td>中型SUV</td>
+                  <td>106项升级；激光雷达；神玑NX9031芯片；NWM世界模型；SkyOS·天枢；17.3英寸3K后排屏</td>
+                  <td><span class="car-tag hot">即将上市</span></td>
+                </tr>
+                <tr data-brand="li">
+                  <td><strong style="color:var(--brand-li)">理想</strong></td>
+                  <td>6月底发布</td>
+                  <td><span class="car-name">全新L8</span></td>
+                  <td><span class="car-price">待公布</span></td>
+                  <td>高端家庭用户</td>
+                  <td>大型SUV</td>
+                  <td>全新换代；6月技术发布会同步披露</td>
+                  <td><span class="car-tag new">即将发布</span></td>
+                </tr>
+                <tr data-brand="vw">
+                  <td><strong style="color:var(--brand-vw)">大众</strong></td>
+                  <td>Q3上市</td>
+                  <td><span class="car-name">ID.ERA 5S</span></td>
+                  <td><span class="car-price">待公布</span></td>
+                  <td>关注智能化的德系品质用户</td>
+                  <td>中型插混轿车</td>
+                  <td>全球首款支持城市NOA的大众轿车；1.5L插混；已完成工信部申报</td>
+                  <td><span class="car-tag new">已申报</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /report-card r10 -->
 
 
     <!-- ===== REPORT 9: 5/18–5/25 ===== -->
